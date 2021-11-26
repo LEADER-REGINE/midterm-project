@@ -12,7 +12,7 @@ function StudentList() {
     }, [dispatch]);
 
     return (
-        <Text>Hello</Text>
+        <p>Hello</p>
 
 
     );

@@ -2,10 +2,9 @@ import '../App.css';
 
 import React from "react";
 import { ThemeProvider, createTheme } from '@mui/material';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import StudentList from '../pages/StudentList';
 import { useSelector } from 'react-redux';
-import { CssBaseline } from '@mui/material';
 
 
 export default function RouterComponent() {
@@ -68,11 +67,10 @@ export default function RouterComponent() {
      }) */
     return (
         <ThemeProvider>
-            <CssBaseline />
             <Router>
-                <Routes >
-                    <Route exact element={StudentList} path="/" />
-                </Routes >
+                <Switch >
+                    <Route exact component={StudentList} path="/" />
+                </Switch >
             </Router>
         </ThemeProvider>
     );

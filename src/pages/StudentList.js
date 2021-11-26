@@ -2,6 +2,8 @@ import '../App.css';
 import { useDispatch } from 'react-redux';
 import { getTheme } from '../redux/actions/uiAction';
 import { useEffect } from 'react';
+import Navbar from '../components/Navbar';
+import * as Mui from '@mui/material';
 
 function StudentList() {
 
@@ -12,7 +14,10 @@ function StudentList() {
     }, [dispatch]);
 
     return (
-        <p>Hello</p>
+        <Mui.Box>
+            <Navbar />
+        </Mui.Box>
+
 
 
     );

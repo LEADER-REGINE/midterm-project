@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+import store from './redux/store.js';
+import { Provider } from 'react-redux';
+
 function App() {
   return (
     <div className="App">

@@ -7,11 +7,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
-/* import firebase from "../config/firebase";
+import firebase from "../config/firebase";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
-const provider = new GoogleAuthProvider(); */
+const provider = new GoogleAuthProvider();
 const style = {
   position: 'absolute',
   top: '50%',
@@ -25,7 +25,7 @@ const style = {
   textAlign: "center",
 };
 
-/* function LoginWithGoogle() {
+function LoginWithGoogle() {
   const auth = getAuth();
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -46,7 +46,7 @@ const style = {
       // ...
     });
 
-} */
+}
 
 export default function LoginModal() {
   const [open, setOpen] = React.useState(false);
@@ -79,8 +79,7 @@ export default function LoginModal() {
                 Login with Twitter
               </Typography>
             </Button>
-            {/* <Button variant="contained" color="error" onClick={() => LoginWithGoogle()}> */}
-            <Button variant="contained" color="error">
+            <Button variant="contained" color="error" onClick={() => LoginWithGoogle()}>
               <GoogleIcon />
               <Typography>
                 Login with Google

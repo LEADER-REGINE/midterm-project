@@ -27,9 +27,10 @@ const style = {
   p: 4,
   textAlign: "center",
 };
-
+const auth = getAuth();
+const user = auth.currentUser;
 function LoginWithGoogle() {
-  const auth = getAuth();
+
   signInWithPopup(auth, googleprovider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -52,7 +53,6 @@ function LoginWithGoogle() {
 }
 
 function LoginWithTwitter() {
-  const auth = getAuth();
   signInWithPopup(auth, twitterprovider)
     .then((result) => {
       // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
@@ -73,12 +73,11 @@ function LoginWithTwitter() {
       // The AuthCredential type that was used.
       const credential = TwitterAuthProvider.credentialFromError(error);
       // ...
-      console.log(errorMessage);
+
     });
 }
 
 function LoginWithFacebook() {
-  const auth = getAuth();
   signInWithPopup(auth, fbprovider)
     .then((result) => {
       // The signed-in user info.
@@ -109,9 +108,8 @@ export default function LoginModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [isLoggedin, setIsLoggedIn] = React.useState(false);
+  const [name, setName] = React.useState("");
 
-  const auth = getAuth();
-  const user = auth.currentUser;
 
   const logout = (e) => {
     signOut(auth).then(() => {
@@ -123,9 +121,9 @@ export default function LoginModal() {
 
   getAuth().onAuthStateChanged(function (user) {
     setIsLoggedIn(user);
+    if (user !== null)
+      setName(user.displayName);
   });
-
-
 
   return (
     <div>
@@ -143,7 +141,9 @@ export default function LoginModal() {
 
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              This is your name
+              {
+                name
+              }
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Lalala

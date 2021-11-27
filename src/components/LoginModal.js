@@ -8,10 +8,12 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import firebase from "../config/firebase";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+
 
 
 const provider = new GoogleAuthProvider();
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -48,10 +50,30 @@ function LoginWithGoogle() {
 
 }
 
+
 export default function LoginModal() {
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [isLoggedin, setIsLoggedIn] = React.useState(false);
+
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const logout = (e) => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
+  getAuth().onAuthStateChanged(function (user) {
+    setIsLoggedIn(!!user);
+  });
+
+
 
   return (
     <div>
@@ -65,35 +87,55 @@ export default function LoginModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Sign In
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Sign in to review and rate students.
-          </Typography>
-          <Box>
-            <Button variant="contained" color="secondary">
-              <TwitterIcon />
+        {isLoggedin ?
+
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              This is your name
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Lalala
+            </Typography>
+            <Button variant="contained" color="error" onClick={logout}>
               <Typography>
-                Login with Twitter
-              </Typography>
-            </Button>
-            <Button variant="contained" color="error" onClick={() => LoginWithGoogle()}>
-              <GoogleIcon />
-              <Typography>
-                Login with Google
-              </Typography>
-            </Button>
-            <Button variant="contained" >
-              <FacebookIcon />
-              <Typography>
-                Login with Facebook
+                Sign Out
               </Typography>
             </Button>
           </Box>
-        </Box>
+          :
+          <Box sx={style}>
+
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Sign In
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Sign in to review and rate students.
+            </Typography>
+            <Box>
+              <Button variant="contained" color="secondary">
+                <TwitterIcon />
+                <Typography>
+                  Login with Twitter
+                </Typography>
+              </Button>
+              <Button variant="contained" color="error" onClick={() => LoginWithGoogle()}>
+                <GoogleIcon />
+                <Typography>
+                  Login with Google
+                </Typography>
+              </Button>
+              <Button variant="contained" >
+                <FacebookIcon />
+                <Typography>
+                  Login with Facebook
+                </Typography>
+              </Button>
+            </Box>
+          </Box>
+        }
       </Modal>
     </div>
   );
+
+
 }

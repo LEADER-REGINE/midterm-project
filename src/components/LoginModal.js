@@ -8,11 +8,12 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import firebase from "../config/firebase";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, TwitterAuthProvider, FacebookAuthProvider } from "firebase/auth";
 
 
-
-const provider = new GoogleAuthProvider();
+const fbprovider = new FacebookAuthProvider();
+const googleprovider = new GoogleAuthProvider();
+const twitterprovider = new TwitterAuthProvider();
 
 const style = {
   position: 'absolute',
@@ -29,7 +30,7 @@ const style = {
 
 function LoginWithGoogle() {
   const auth = getAuth();
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, googleprovider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -50,6 +51,57 @@ function LoginWithGoogle() {
 
 }
 
+function LoginWithTwitter() {
+  const auth = getAuth();
+  signInWithPopup(auth, twitterprovider)
+    .then((result) => {
+      // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+      // You can use these server side with your app's credentials to access the Twitter API.
+      const credential = TwitterAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const secret = credential.secret;
+
+      // The signed-in user info.
+      const user = result.user;
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = TwitterAuthProvider.credentialFromError(error);
+      // ...
+      console.log(errorMessage);
+    });
+}
+
+function LoginWithFacebook() {
+  const auth = getAuth();
+  signInWithPopup(auth, fbprovider)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
+
+      // ...
+    });
+}
 
 export default function LoginModal() {
 
@@ -70,7 +122,7 @@ export default function LoginModal() {
   }
 
   getAuth().onAuthStateChanged(function (user) {
-    setIsLoggedIn(!!user);
+    setIsLoggedIn(user);
   });
 
 
@@ -112,7 +164,7 @@ export default function LoginModal() {
               Sign in to review and rate students.
             </Typography>
             <Box>
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary" onClick={() => LoginWithTwitter()}>
                 <TwitterIcon />
                 <Typography>
                   Login with Twitter
@@ -124,7 +176,7 @@ export default function LoginModal() {
                   Login with Google
                 </Typography>
               </Button>
-              <Button variant="contained" >
+              <Button variant="contained" onClick={() => LoginWithFacebook()}>
                 <FacebookIcon />
                 <Typography>
                   Login with Facebook

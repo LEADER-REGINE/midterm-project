@@ -13,16 +13,28 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider(); */
 const style = {
+ Login : {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  backgroundColor: "rgba(19, 20, 20 )",
+  backgroundBlendMode: "multiply",
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
   textAlign: "center",
+ },
+
+ loginButton : {
+  margin : "10px 10px"
+ },
+
+ modalText : {
+   padding : "5px 10px",
+   color : (theme) => theme.palette.common.white,
+ }
 };
 
 /* function LoginWithGoogle() {
@@ -54,7 +66,7 @@ export default function LoginModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <Box>
       <Button onClick={handleOpen} variant="text" color="secondary">
         <AccountCircleIcon>
         </AccountCircleIcon>
@@ -65,36 +77,27 @@ export default function LoginModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Box sx={style.Login}>
+          <Typography id="modal-modal-title" variant="h6" component="h2" sx = {style.modalText}>
             Sign In
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx = {style.modalText}>
             Sign in to review and rate students.
           </Typography>
           <Box>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained"  sx = {style.loginButton}>
               <TwitterIcon />
-              <Typography>
-                Login with Twitter
-              </Typography>
             </Button>
             {/* <Button variant="contained" color="error" onClick={() => LoginWithGoogle()}> */}
-            <Button variant="contained" color="error">
+            <Button variant="contained" color = "#4285F4"  sx = {style.loginButton}>
               <GoogleIcon />
-              <Typography>
-                Login with Google
-              </Typography>
             </Button>
-            <Button variant="contained" >
+            <Button variant="contained" sx = {style.loginButton} >
               <FacebookIcon />
-              <Typography>
-                Login with Facebook
-              </Typography>
             </Button>
           </Box>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }

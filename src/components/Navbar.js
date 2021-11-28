@@ -52,10 +52,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+const style = {
+    appBar :{
+        backgroundColor : "#1E1F20",
+    }
+};
+
 export default function Navbar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" sx = {style.appBar}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -64,7 +70,7 @@ export default function Navbar() {
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
                     <Typography
                         variant="h6"

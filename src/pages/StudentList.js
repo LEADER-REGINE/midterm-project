@@ -8,6 +8,7 @@ import { studentData } from './studentinfo';
 
 
 import firebase from "../config/firebase";
+import { onSnapshot } from '@firebase/firestore';
 
 const style = {
 
@@ -128,9 +129,10 @@ const style = {
 function StudentList() {
 
     const dispatch = useDispatch();
-    const sData = studentData
     const db = firebase.firestore();
-    const [studlist, setstudlist] = useState([])
+    const [studlist, setstudlist] = useState({
+        list: [],
+    })
 
     useEffect(() => {
         dispatch(getTheme());
@@ -140,14 +142,16 @@ function StudentList() {
     const fetchList = async () => {
         const studRef = db.collection('students');
         const data = await studRef.limit(4).get();
-        data.docs.forEach(item => {
-            setstudlist([...studlist, item.data()])
+        let studentList = [];
+        data.docs.forEach(onSnapshot => {
+            studentList.push(onSnapshot.data())
+            console.log(onSnapshot.data());
+            setstudlist({ list: studentList });
         })
     }
     useEffect(() => {
         fetchList();
     }, [])
-
 
     return (
         <Mui.Box>
@@ -158,7 +162,7 @@ function StudentList() {
                 </Mui.Box>
                 <Mui.Box sx={style.studentContainer}>
                     {
-                        studlist && studlist.map(studlist => {
+                        studlist && studlist.list.map((studlist) => {
                             return (
 
                                 <Mui.Paper sx={style.studentPaper} elevation="10" key={studlist.fullname}>

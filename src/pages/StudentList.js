@@ -42,7 +42,6 @@ const style = {
     studentContainer: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
         marginLeft: "236px",
         marginRight: "236px",
         flexWrap: "wrap",

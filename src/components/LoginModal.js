@@ -26,17 +26,23 @@ const style = {
   backgroundBlendMode: "multiply",
   border: '2px solid #000',
   boxShadow: 24,
+  borderRadius : "8px",
   p: 4,
   textAlign: "center",
  },
 
  loginButton : {
-  margin : "10px 10px"
+  margin : "10px 10px",
+  backgroundColor : (theme) => theme.palette.secondary.main,
  },
 
  modalText : {
    padding : "5px 10px",
    color : (theme) => theme.palette.common.white,
+ },
+
+ logoutButton : { 
+   marginTop : "10px"
  }
 };
 const auth = getAuth();
@@ -151,16 +157,13 @@ export default function LoginModal() {
       >
         {isLoggedin ?
 
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {
-                name
-              }
+          <Box sx={style.Login}>
+              <Typography id="modal-modal-title" variant="h6" component="h2" color = " white">
+                {
+                  name
+                }
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Lalala
-            </Typography>
-            <Button variant="contained" color="error" onClick={logout}>
+            <Button variant="contained" color="error" onClick={logout} sx = {style.logoutButton}>
               <Typography>
                 Sign Out
               </Typography>
@@ -180,10 +183,10 @@ export default function LoginModal() {
             <Button variant="contained"  sx = {style.loginButton} >
               <TwitterIcon />
             </Button>
-            <Button variant="contained" color = "error"  sx = {style.loginButton} onClick={() => LoginWithGoogle()}>
+            <Button variant="contained"  sx = {style.loginButton} onClick={() => LoginWithGoogle()}>
               <GoogleIcon />
             </Button>
-            <Button variant="contained" sx = {style.loginButton} onClick = {() => LoginWithFacebook()} >
+            <Button variant="contained" sx = {style.loginButton}  onClick = {() => LoginWithFacebook()} >
               <FacebookIcon />
               </Button>
             </Box>

@@ -28,6 +28,10 @@ export default function RouterComponent() {
             error: {
                 main: '#FC7374',
             },
+            logo1 : {
+                main: '#4267B2',
+            },
+
             background: {
                 paper: '#C6C8D1',
                 default: '#161821',

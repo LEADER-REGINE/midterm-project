@@ -9,6 +9,11 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import LoginModal from './LoginModal';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import { Link, useHistory } from "react-router-dom";
+import QrCodeIcon from '@mui/icons-material/QrCode';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -52,28 +57,165 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+
+const pages = ['Student List', 'Student Evaluation', 'Blog'];
+
+
+
+
+
+
+
+
+
+
 export default function Navbar() {
+
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+
+
+
+
+
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" >
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        //style={{display: 'inline'}}
+                        >
+                            Student Review
+
+                        </Typography>
+                        <QrCodeIcon style={{ marginTop: 5 }}/>
+                    </Box>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+                            <Link to='/StudentList' style={{ textDecoration: 'none' }}>
+                                <Button
+
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, display: 'block' }}
+                                >
+                                    Student List
+                                </Button>
+                            </Link>
+                            <Link to='/StudentEvaluation' style={{ textDecoration: 'none' }}>
+                                <Button
+
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, display: 'block' }}
+                                >
+                                    Student Evaluation
+                                </Button>
+                            </Link>
+                            <Link to='/Blog' style={{ textDecoration: 'none' }}>
+                                <Button
+
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, display: 'block' }}
+                                >
+                                    Blog
+                                </Button>
+                            </Link>
+                        </Menu>
+                    </Box>
+
                     <Typography
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                     >
-                        Student Review
+                        Student List
                     </Typography>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Link to='/StudentList' style={{ textDecoration: 'none' }}>
+                            <Button
+
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Student List
+                            </Button>
+                        </Link>
+                        <Link to='/StudentEvaluation' style={{ textDecoration: 'none' }}>
+                            <Button
+
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Student Evaluation
+                            </Button>
+                        </Link>
+                        <Link to='/Blog' style={{ textDecoration: 'none' }}>
+                            <Button
+
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Blog
+                            </Button>
+                        </Link>
+
+                    </Box>
+
+
+
+
+
                     <LoginModal />
                     <Search>
                         <SearchIconWrapper>

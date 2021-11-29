@@ -17,7 +17,7 @@ export default function StudentProfile() {
         const data = await studRef.get();
         let studentProfile = [];
         data.docs.forEach(onSnapshot => {
-            studentList.push(onSnapshot.data())
+            studentProfile.push(onSnapshot.data())
             console.log(onSnapshot.data());
             setstudProfile({ profile: studentProfile });
         })

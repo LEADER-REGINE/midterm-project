@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import StudentList from '../pages/StudentList';
 import { useSelector } from 'react-redux';
-import StudentEvaluation from '../pages/StudentList';
+import StudentEvaluation from '../pages/StudentEvaluation';
 import Navbar from '../components/Navbar';
 
 export default function RouterComponent() {
@@ -77,7 +77,7 @@ export default function RouterComponent() {
                 <Navbar />
                 <Switch >
                     <Route exact component={StudentList} path="/" />
-                    <Route component={StudentEvaluation} path="/evaluation" />
+                    <Route component={StudentEvaluation} path="/studentevaluation" />
                 </Switch >
             </Router>
         </ThemeProvider>

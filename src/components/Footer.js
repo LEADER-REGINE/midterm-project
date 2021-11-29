@@ -35,9 +35,9 @@ const style = {
         fontWeight: "light",
         padding: .5,
         fontSize: {
-            xs: "2rem",
-            sm: ".5rem",
-            md: ".75rem",
+            xs: ".75rem",
+            sm: "1rem",
+            md: "1.25rem",
         },
         letterSpacing: "0.0625rem",
         color:" #62666D"
@@ -47,9 +47,9 @@ const style = {
         fontWeight: "light",
         padding: .5,
         fontSize: {
-            xs: "2rem",
-            sm: ".5rem",
-            md: ".75rem",
+            xs: ".75rem",
+            sm: "1rem",
+            md: "1.25rem",
         },
         letterSpacing: "0.0625rem",
         color: "#26CE8D",
@@ -110,8 +110,6 @@ export default function Footer() {
                             </Box>
                         </Box>
                     </Grid>
-                  
-
                 </Grid>
             </Box>
 

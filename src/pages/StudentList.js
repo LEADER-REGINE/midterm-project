@@ -17,8 +17,8 @@ const style = {
 
     header: {
         position: "absolute",
-        width: "100%",
-        height: "100%",
+        width: "1519.5px",
+        height: "1995px",
         background: "#131414",
     },
 
@@ -152,9 +152,16 @@ const style = {
 
     sortContainer : {
         marginTop : "57px",
-        marginLeft : "900px",
+        marginLeft : "650px",
         display : "flex",
-        justifyContent : "row", 
+        justifyContent : "center",
+        flexWrap : "wrap",
+        "@media only screen and (max-width : 720px)": {
+            
+            marginLeft : "15px"
+
+        }
+
     },
 
     sort : {
@@ -164,7 +171,6 @@ const style = {
         fontWeight : 500,
         fontSize : "12px",
         color : "#D1D4C9",
-        marginRight : "8px",
         
     },
 
@@ -175,7 +181,11 @@ const style = {
         fontWeight : 500,
         fontSize : "12px",
         color : "#D1D4C9",
-        marginLeft : "32px",
+        marginLeft : "10px",
+        "@media only screen and (max-width : 720px)": {
+            marginLeft : "0px"
+
+        }
     },
 
     formControl : {
@@ -190,6 +200,31 @@ const style = {
     borderRadius: "8px",
     fontSize : "12px",
     color : "#D1D4C9",
+    },
+    
+    label : {
+        display :"flex",
+        justifyContent : "row",
+        alignItems : "center",
+        marginTop : "20px",
+        marginLeft : "761px"
+    }, 
+
+    studentLabel : {
+        fontSize : "14px",
+        marginRight : "100px",
+        color : "#62666D",
+        marginBottom : "20px",
+    },
+
+    studListPaper : {
+        
+        width : "906px",
+        height : "64px",
+        alignItems : "center",
+        marginLeft : "324px",
+        marginBottom: "12px",
+        backgroundColor: "#1E1F20",
     }
 
 
@@ -197,7 +232,7 @@ const style = {
 
 
 function StudentList() {
-    const [sort, setSort] = React.useState('');
+    const sData = studentData;
     const [filter, setFilter] = React.useState('');
     const dispatch = useDispatch();
     const db = firebase.firestore();
@@ -205,13 +240,29 @@ function StudentList() {
         list: [],
     })
 
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('');
+
     useEffect(() => {
         dispatch(getTheme());
     }, [dispatch]);
 
-    const handleChange = (event) => {
-        setSort(event.target.value);
-      };
+
+    useEffect(() => {
+        const sortArray = type => {
+            const types = {
+              name: 'name',
+              Ys: 'Ys',
+              review: 'review',
+            };
+            const sortProperty = types[type];
+            const sorted = [...studentData].sort((a, b) => b[sortProperty] - a[sortProperty]);
+            console.log(sorted)
+            setData(sorted);
+          };
+          sortArray(sortType);
+    } ,[sortType]);
+   
 
       const handleFilter = (event) => {
         setFilter(event.target.value);
@@ -232,7 +283,7 @@ function StudentList() {
     }, [])
 
     return (
-        <Mui.Box>
+        <Mui.Box sx = {style.Root}>
             <Navbar />
             <Mui.Box sx={style.header}>
                 <Mui.Box component="label" sx={style.topStudent}>
@@ -259,13 +310,13 @@ function StudentList() {
                             Sort By :
                             <Mui.Box>
                             <FormControl sx = {style.formControl} size = "small">
-                                <Select value={sort} onChange={handleChange} sx={style.dropDown}>
+                                <Select onChange={(e) => setSortType(e.target.value)} sx={style.dropDown}>
                                     <MenuItem value="Most Recent">
                                         Most Recent
                                     </MenuItem>
-                                    <MenuItem value="Name">Name</MenuItem>
-                                    <MenuItem value="Year & Section">Year & Section</MenuItem>
-                                    <MenuItem value="Reviews">Reviews</MenuItem>
+                                    <MenuItem value="name">Name</MenuItem>
+                                    <MenuItem value="Ys">Year & Section</MenuItem>
+                                    <MenuItem value="review">Reviews</MenuItem>
                                 </Select>
                             </FormControl>
                             </Mui.Box>
@@ -279,13 +330,49 @@ function StudentList() {
                                         No Filter
                                     </MenuItem>
                                     <MenuItem value="Name">Name</MenuItem>
-                                    <MenuItem value="Year & Section">Year & Section</MenuItem>
+                                    <MenuItem value="Ys">Year & Section</MenuItem>
                                     <MenuItem value="Reviews">Reviews</MenuItem>
                                 </Select>
                             </FormControl>
                             </Mui.Box>
                         </Mui.Typography>
                     </Mui.Box>
+
+                    <Mui.Box sx ={style.label}>
+                        <Mui.Box component = "label" sx = {style.studentLabel}>
+                            Year & Section
+                        </Mui.Box>
+                        <Mui.Box component = "label" sx = {style.studentLabel}>
+                            Reviews
+                        </Mui.Box>
+                        <Mui.Box component = "label" sx = {style.studentLabel}>
+                            Ratings
+                        </Mui.Box>
+                    </Mui.Box>
+
+                    <Mui.Box sx = {style.studListContainer}>
+                       
+                            {sData.map((data) =>{
+                                return (
+                                    <Mui.Paper sx={style.studListPaper} key = {studentData.id}>
+                                        <Mui.Box component = "label">
+                                            {data.id}
+                                        </Mui.Box>
+                                        <Mui.Box component = "img" src = {data.image}></Mui.Box>
+                                        <Mui.Box component = "label">
+                                            {data.name}
+                                        </Mui.Box>
+                                        <Mui.Box component = "label">
+                                            BSIT{data.Ys}A
+                                        </Mui.Box>
+                                        <Mui.Box component = "label">
+                                            {data.review}
+                                        </Mui.Box>
+                                    </Mui.Paper>
+                                )
+                            })}
+                    </Mui.Box>
+
             </Mui.Box>
             
         </Mui.Box>

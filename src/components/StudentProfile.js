@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 
-
 import firebase from "../config/firebase";
 import { Box, Typography } from '@mui/material';
 
@@ -14,11 +13,10 @@ export default function StudentProfile() {
     var UID = "1EsDTohAZbXnyL4NcY65";
     const fetchList = async () => {
         const studRef = db.collection('students').doc(UID);
-        const data = await studRef.get();
         let studentProfile = [];
-        data.docs.forEach(onSnapshot => {
-            studentProfile.push(onSnapshot.data())
-            console.log(onSnapshot.data());
+        studRef.get().then(doc => {
+            studentProfile.push(doc.data())
+            console.log(doc.data());
             setstudProfile({ profile: studentProfile });
         })
     }

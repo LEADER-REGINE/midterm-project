@@ -69,10 +69,7 @@ function StudentEvaluation() {
     return (
         <Mui.Box>
             <Mui.Box sx={style.header}>
-                <StudentProfile/>
-                <Mui.Box sx={style.sortContainer}>
-                    <StudentTable />
-                </Mui.Box>
+                <StudentProfile />
             </Mui.Box>
 
         </Mui.Box>

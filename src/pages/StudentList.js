@@ -8,12 +8,13 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { studentData } from './studentinfo';
-
+import Footer from "../components/Footer"
 
 import firebase from "../config/firebase";
 import { onSnapshot } from '@firebase/firestore';
 
 const style = {
+
 
     header: {
         position: "absolute",
@@ -283,7 +284,7 @@ function StudentList() {
     }, [])
 
     return (
-        <Mui.Box sx = {style.Root}>
+        <Mui.Box sx = {style.root}>
             <Navbar />
             <Mui.Box sx={style.header}>
                 <Mui.Box component="label" sx={style.topStudent}>
@@ -372,9 +373,9 @@ function StudentList() {
                                 )
                             })}
                     </Mui.Box>
-
+                    <Footer/>
             </Mui.Box>
-            
+         
         </Mui.Box>
          
 

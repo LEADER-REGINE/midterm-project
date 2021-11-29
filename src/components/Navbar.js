@@ -9,6 +9,8 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import LoginModal from './LoginModal';
+import { List, ListItem, ListItemText } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -53,15 +55,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const style = {
-    appBar :{
-        backgroundColor : "#1E1F20",
+    appBar: {
+        backgroundColor: "#1E1F20",
     }
 };
 
 export default function Navbar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx = {style.appBar}>
+            <AppBar position="static" sx={style.appBar}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -70,7 +72,7 @@ export default function Navbar() {
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -80,6 +82,19 @@ export default function Navbar() {
                     >
                         Student Review
                     </Typography>
+                    <List>
+                        <ListItem >
+                            <ListItemText>
+                                <Link to="/">Student List</Link>
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem >
+                            <ListItemText>
+                                <Link to="/studentevaluation">Student Evaluation</Link>
+                            </ListItemText>
+                        </ListItem>
+
+                    </List>
                     <LoginModal />
                     <Search>
                         <SearchIconWrapper>

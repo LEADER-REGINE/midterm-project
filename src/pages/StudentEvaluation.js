@@ -4,8 +4,7 @@ import { getTheme } from '../redux/actions/uiAction';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import * as Mui from '@mui/material';
-import StudentTable from '../components/StudentTable';
-import TopStudents from '../components/TopStudents';
+import StudentProfile from '../components/StudentProfile';
 
 const style = {
 
@@ -57,9 +56,8 @@ const style = {
 };
 
 
-function StudentList() {
+function StudentEvaluation() {
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         dispatch(getTheme());
@@ -69,16 +67,14 @@ function StudentList() {
         <Mui.Box>
             <Mui.Box sx={style.header}>
                 <Mui.Box component="label" sx={style.topStudent}>
-                    Top Students
+                    <Mui.Typography>
+                        Test
+                    </Mui.Typography>
                 </Mui.Box>
-                <TopStudents />
-                <Mui.Box sx={style.sortContainer}>
-                    <StudentTable />
-                </Mui.Box>
+                <StudentEvaluation />
             </Mui.Box>
-
         </Mui.Box>
     );
 }
 
-export default StudentList;
+export default StudentEvaluation;

@@ -72,7 +72,7 @@ function StudentList() {
                     Top Students
                 </Mui.Box>
                 <TopStudents />
-                <Mui.Box sx={style.sortContainer}>
+                <Mui.Box>
                     <StudentTable />
                 </Mui.Box>
             </Mui.Box>

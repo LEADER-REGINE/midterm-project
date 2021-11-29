@@ -1,68 +1,33 @@
 export const studentData = [
     {
-        id : "1",
         image : require("../img/RoundProfile.png").default,
         name : "Nickname",
-        Ys : "4",
-        review : "30",
+        review : "30 reviews",
         starsGreen : require("../img/Path.png").default,
         starsblank : require("../img/Pathblank.png").default,
     },
 
     {
-        id : "2",
         image : require("../img/RoundProfile.png").default,
         name : "Nickname",
-        Ys : "2",
-        review : "6",
+        review : "30 reviews",
         starsGreen : require("../img/Path.png").default,
         starsblank : require("../img/Pathblank.png").default,
     },
 
     {
-        id : "3",
         image : require("../img/RoundProfile.png").default,
         name : "Nickname",
-        Ys : "3",
-        review : "15",
+        review : "30 reviews",
         starsGreen : require("../img/Path.png").default,
         starsblank : require("../img/Pathblank.png").default,
     },
 
     {
-        id : "4",
         image : require("../img/RoundProfile.png").default,
         name : "Nickname",
-        Ys : "1",
-        review : "0",
+        review : "30 reviews",
         starsGreen : require("../img/Path.png").default,
         starsblank : require("../img/Pathblank.png").default,
-    },
-    {
-        id : "5",
-        image : require("../img/RoundProfile.png").default,
-        name : "Nickname",
-        Ys : "4",
-        review : "1",
-        starsGreen : require("../img/Path.png").default,
-        starsblank : require("../img/Pathblank.png").default,
-    },
-    {
-        id : "6",
-        image : require("../img/RoundProfile.png").default,
-        name : "Nickname",
-        Ys : "2",
-        review : "5",
-        starsGreen : require("../img/Path.png").default,
-        starsblank : require("../img/Pathblank.png").default,
-    },
-    {
-        id : "7",
-        image : require("../img/RoundProfile.png").default,
-        name : "Nickname",
-        Ys : "1",
-        review : "10",
-        starsGreen : require("../img/Path.png").default,
-        starsblank : require("../img/Pathblank.png").default,
-    },
+    }
 ]

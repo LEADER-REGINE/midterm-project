@@ -12,9 +12,6 @@ import { studentData } from '../pages/studentinfo';
 const style = {
 
     header: {
-        position: "absolute",
-        width: "1519.5px",
-        height: "1995px",
         background: "#131414",
     },
 
@@ -257,7 +254,7 @@ export default function LoS() {
 
 
     return (
-        <Mui.Box>
+        <Mui.Box sx = {style.header}>
             <Mui.Box sx={style.sortContainer}>
                 <Mui.Box component="label" sx={style.sort}>
                     Sort By :

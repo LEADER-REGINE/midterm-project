@@ -7,6 +7,7 @@ import StudentList from '../pages/StudentList';
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import StudentEvaluation from '../pages/StudentEvaluation';
 
 export default function RouterComponent() {
     const ui = useSelector((state) => state.ui);
@@ -40,7 +41,7 @@ export default function RouterComponent() {
         },
 
         typography: {
-            fontFamily: 'Inconsolata',
+            fontFamily: 'Lato',
         },
     })
 
@@ -77,6 +78,7 @@ export default function RouterComponent() {
                 <Navbar />
                 <Switch >
                     <Route exact component={StudentList} path="/" />
+                    <Route exact component={StudentEvaluation} path="/evaluation" />
                 </Switch >
                 <Footer />
             </Router>

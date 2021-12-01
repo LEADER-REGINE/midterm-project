@@ -8,8 +8,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { studentData } from '../pages/studentinfo';
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTheme, getID } from '../redux/actions/uiAction';
+import { setID } from '../redux/actions/uiAction';
 
 const style = {
     studentImage: {
@@ -166,7 +168,7 @@ const style = {
 
 export default function LoS() {
     const sData = studentData;
-    const [filter, setFilter] = React.useState('');
+    const [filter, setFilter] = useState('');
 
 
     const [data, setData] = useState([]);
@@ -180,11 +182,10 @@ export default function LoS() {
 
     const fetchList = async () => {
         const studRef = db.collection('students');
-        const data = await studRef.limit(4).get();
+        const data = await studRef.get();
         let studentList = [];
         data.docs.forEach(onSnapshot => {
             studentList.push(onSnapshot.data())
-            console.log(onSnapshot.data());
             setstudlist({ list: studentList });
         })
     }
@@ -192,30 +193,25 @@ export default function LoS() {
         fetchList();
     }, [])
 
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const sortArray = type => {
-            const types = {
-                name: 'name',
-                Ys: 'Ys',
-                review: 'review',
-            };
-            const sortProperty = types[type];
-            const sorted = [...studentData].sort((a, b) => b[sortProperty] - a[sortProperty]);
-            console.log(sorted)
-            setData(sorted);
-        };
-        sortArray(sortType);
-    }, [sortType]);
+        dispatch(getTheme());
+        dispatch(getID());
+    }, [dispatch]);
 
 
     const handleFilter = (event) => {
         setFilter(event.target.value);
     };
 
+    function setUID(uid) {
+        dispatch(setID(uid));
+    }
 
     return (
         <Mui.Box sx={style.header}>
+
             <Mui.Box sx={style.sortContainer}>
                 <Mui.Box component="label" sx={style.sort}>
                     Sort By :
@@ -248,6 +244,7 @@ export default function LoS() {
                     </Mui.Box>
                 </Mui.Typography>
             </Mui.Box>
+
             <Mui.Container>
                 <Mui.Box sx={style.details} >
 
@@ -266,16 +263,22 @@ export default function LoS() {
                             Ratings
                         </Mui.Typography>
                     </Mui.Box>
-
-
                 </Mui.Box>
 
                 <Mui.Box sx={style.studListContainer}>
                     {studlist && studlist.list.map((studlist) => {
                         return (
                             <Mui.Container>
+
                                 <Mui.Paper sx={style.studListPaper} key={studlist.id}>
-                                    <Link to="/evaluation" style={{ textDecoration: 'none', color: "white" }} >
+                                    <Link
+                                        style={{ textDecoration: 'none', color: "white" }}
+                                        onClick={() => setUID(studlist.id)}
+                                        to={{
+                                            pathname: "/evaluation",
+                                            state: { uid: studlist.id }
+                                        }}
+                                    >
                                         <Mui.Box
                                             sx={{
                                                 display: "flex",
@@ -316,6 +319,7 @@ export default function LoS() {
                     })}
                 </Mui.Box>
             </Mui.Container>
+
         </Mui.Box >
     );
 }

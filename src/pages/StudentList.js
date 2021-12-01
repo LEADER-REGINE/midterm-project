@@ -1,6 +1,6 @@
 import '../App.css';
 import { useDispatch } from 'react-redux';
-import { getTheme } from '../redux/actions/uiAction';
+import { getTheme, getID } from '../redux/actions/uiAction';
 import React, { useEffect } from 'react';
 import * as Mui from '@mui/material';
 import TopStudents from '../components/TopStudents';
@@ -37,6 +37,7 @@ function StudentList() {
 
     useEffect(() => {
         dispatch(getTheme());
+        dispatch(getID());
     }, [dispatch]);
 
     return (

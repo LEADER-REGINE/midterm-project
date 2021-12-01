@@ -118,7 +118,6 @@ export default function TopStudents() {
         let studentList = [];
         data.docs.forEach(onSnapshot => {
             studentList.push(onSnapshot.data())
-            console.log(onSnapshot.data());
             setstudlist({ list: studentList });
         })
     }
@@ -134,7 +133,7 @@ export default function TopStudents() {
                     studlist && studlist.list.map((studlist) => {
                         return (
 
-                            <Mui.Paper sx={style.studentPaper} elevation="10" key={studlist.fullname}>
+                            <Mui.Paper sx={style.studentPaper} elevation="10" key={studlist.id}>
                                 <Mui.Box component="img" src={studlist.profileImg} sx={style.studentImage}></Mui.Box>
                                 <Mui.Box sx={style.reviewContainer}>
                                     <Mui.Box component="label" sx={style.studentName}>{studlist.fullname}</Mui.Box>

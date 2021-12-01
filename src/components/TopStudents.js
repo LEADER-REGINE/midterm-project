@@ -8,59 +8,12 @@ import { onSnapshot } from '@firebase/firestore';
 
 const style = {
 
-    header: {
-        position: "absolute",
-        width: "1519.5px",
-        height: "1995px",
-        background: "#131414",
-    },
-
-    topStudent: {
-        position: "static",
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: {
-            xs: "10px",
-            sm: "14px",
-            md: "18px",
-        },
-        lineHeight: "20px",
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        color: "white",
-        flex: "none",
-        order: "0",
-        flexGrow: "0",
-        marginLeft: {
-            xs: "100px",
-            sm: "200px",
-            md: "310px",
-        },
-        marginTop: {
-            xs: "20px",
-            sm: "30px",
-            md: "38px",
-        },
-    },
-
     studentContainer: {
         display: "flex",
         flexDirection: "row",
-        marginLeft: {
-            xs: "115px",
-            sm: "200px",
-            md: "324px",
-        },
-        flexWrap: "wrap",
-
-
+        justifyContent: "space-evenly",
         "@media only screen and (max-width : 720px)": {
             flexDirection: "column",
-
-
-
         }
 
     },
@@ -76,12 +29,16 @@ const style = {
             sm: "171px",
             md: "201px",
         },
-        marginRight: "30px",
+        margin: {
+            xs: "10px",
+            sm: "15px",
+            md: "20px",
+        },
+
         backgroundColor: "#1E1F20",
         display: "flex",
         alignItems: "flex-start",
         position: "static",
-        marginTop: "20px",
         border: "1px solid #303336",
 
         "@media only screen and (max-width : 720px)": {
@@ -142,11 +99,6 @@ const style = {
         textAlign: "center",
         color: "#62666D",
     },
-
-
-
-
-
 };
 
 
@@ -172,22 +124,24 @@ export default function TopStudents() {
 
 
     return (
-        <Mui.Box sx={style.studentContainer}>
-            {
-                studlist && studlist.list.map((studlist) => {
-                    return (
+        <Mui.Container>
+            <Mui.Box sx={style.studentContainer}>
+                {
+                    studlist && studlist.list.map((studlist) => {
+                        return (
 
-                        <Mui.Paper sx={style.studentPaper} elevation="10" key={studlist.fullname}>
-                            <Mui.Box component="img" src={studlist.profileImg} sx={style.studentImage}></Mui.Box>
-                            <Mui.Box sx={style.reviewContainer}>
-                                <Mui.Box component="label" sx={style.studentName}>{studlist.fullname}</Mui.Box>
-                                <Mui.Box component="label" sx={style.studentReview}>{studlist.reviews} reviews</Mui.Box>
-                            </Mui.Box>
-                        </Mui.Paper>
-                    )
-                })
-            }
-        </Mui.Box>
+                            <Mui.Paper sx={style.studentPaper} elevation="10" key={studlist.fullname}>
+                                <Mui.Box component="img" src={studlist.profileImg} sx={style.studentImage}></Mui.Box>
+                                <Mui.Box sx={style.reviewContainer}>
+                                    <Mui.Box component="label" sx={style.studentName}>{studlist.fullname}</Mui.Box>
+                                    <Mui.Box component="label" sx={style.studentReview}>{studlist.reviews} reviews</Mui.Box>
+                                </Mui.Box>
+                            </Mui.Paper>
+                        )
+                    })
+                }
+            </Mui.Box>
+        </Mui.Container>
     );
 }
 

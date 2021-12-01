@@ -13,10 +13,8 @@ const style = {
         background: "#131414",
     },
     topStudent: {
-        position: "static",
-        fontFamily: "Roboto",
         fontStyle: "normal",
-        fontWeight: "normal",
+        fontWeight: "bold",
         fontSize: {
             xs: "10px",
             sm: "14px",
@@ -30,12 +28,13 @@ const style = {
         flex: "none",
         order: "0",
         flexGrow: "0",
-        marginLeft: {
-            xs: "100px",
-            sm: "200px",
-            md: "310px",
-        },
+
         marginTop: {
+            xs: "20px",
+            sm: "30px",
+            md: "38px",
+        },
+        marginBottom: {
             xs: "20px",
             sm: "30px",
             md: "38px",
@@ -53,6 +52,7 @@ function StudentList() {
     }, [dispatch]);
 
     return (
+
         <Mui.Box sx={style.root}>
             <Helmet>
                 <meta charSet="utf-8" />
@@ -61,9 +61,11 @@ function StudentList() {
                 <meta name="keywords" content="Review, Ratings, Student Review, Student Ratings" />
             </Helmet>
             <Mui.Box color="background">
-                <Mui.Box component="label" sx={style.topStudent}>
-                    Top Students
-                </Mui.Box>
+                <Mui.Container>
+                    <Mui.Box component="label" sx={style.topStudent}>
+                        Top Students
+                    </Mui.Box>
+                </Mui.Container>
                 <TopStudents />
                 <LoS />
             </Mui.Box>

@@ -6,9 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
+import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import LoginModal from './LoginModal';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -58,6 +63,21 @@ const style = {
     }
 };
 
+const links = [
+    {
+        to: '/',
+        name: 'Student List'
+    },
+    {
+        to: '/evaluation',
+        name: 'Student Evaluation'
+    },
+    {
+        to: '/blog',
+        name: 'Blog'
+    },
+]
+
 export default function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -87,7 +107,7 @@ export default function Navbar() {
                             component="div"
                             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                         >
-                            LOGO
+                            Student Review
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -119,11 +139,15 @@ export default function Navbar() {
                                     display: { xs: 'block', md: 'none' },
                                 }}
                             >
-                                {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">{page}</Typography>
-                                    </MenuItem>
-                                ))}
+
+                                {links.map(link => (
+                                    <Link onClick={handleCloseNavMenu} to={link.to}>
+                                        <MenuItem key={link.to} onClick={handleCloseNavMenu}>
+                                            <Typography textAlign="center">{link.name}</Typography>
+                                        </MenuItem>
+                                    </Link>
+                                )
+                                )}
                             </Menu>
                         </Box>
                         <Typography
@@ -135,15 +159,10 @@ export default function Navbar() {
                             Student Review
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
-                            ))}
+                            {links.map(link => (
+                                <Link onClick={handleCloseNavMenu} to={link.to}>{link.name}</Link>
+                            )
+                            )}
                         </Box>
                         <LoginModal />
                         <Search>
@@ -155,33 +174,9 @@ export default function Navbar() {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
                     </Toolbar>
                 </Container>
             </AppBar>
-        </Box>
+        </Box >
     );
 }

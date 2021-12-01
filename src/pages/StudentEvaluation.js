@@ -2,10 +2,7 @@ import '../App.css';
 import { useDispatch } from 'react-redux';
 import { getTheme } from '../redux/actions/uiAction';
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import * as Mui from '@mui/material';
-import StudentTable from '../components/StudentTable';
-import TopStudents from '../components/TopStudents';
 import StudentProfile from "../components/StudentProfile";
 
 const style = {

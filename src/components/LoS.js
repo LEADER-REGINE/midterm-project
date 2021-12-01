@@ -8,13 +8,11 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { studentData } from '../pages/studentinfo';
+import { Link } from 'react-router-dom';
+
 
 const style = {
     studentImage: {
-        marginTop: "19.67px",
-        marginLeft: "16.67px",
-        marginBottom: "48.67px",
-        marginRight: "6.67px",
         height: {
             xs: "30px",
             sm: "38px",
@@ -114,31 +112,45 @@ const style = {
         color: "#D1D4C9",
     },
 
-    label: {
-        display: "flex",
-        justifyContent: "row",
-        alignItems: "center",
-        marginTop: "20px",
-        marginLeft: "761px"
-    },
 
     studentLabel: {
         fontSize: "14px",
-        marginRight: "100px",
+
         color: "#62666D",
         marginBottom: "20px",
     },
 
     studListPaper: {
 
-        width: "906px",
-        height: "64px",
-        alignItems: "center",
-        marginLeft: "324px",
+        display: "flex",
+        flexDirection: "column",
         marginBottom: "12px",
         backgroundColor: "#1E1F20",
-    }
+    },
+    studListDetails: {
+        float: "right",
+    },
+    studImg: {
+        padding: "25px",
+    },
+    studDetails: {
+        padding: "25px",
+        display: "flex",
+        flexWrap: "wrap",
+        flexDirection: "row",
+        alignItems: "center",
+    },
 
+    studsubDetails: {
+        paddingLeft: "25px",
+        paddingRight: "25px",
+    },
+
+    details: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+    },
 
 };
 
@@ -150,6 +162,27 @@ export default function LoS() {
 
     const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('');
+
+    const db = firebase.firestore();
+    const [studlist, setstudlist] = useState({
+        list: [],
+    })
+
+
+    const fetchList = async () => {
+        const studRef = db.collection('students');
+        const data = await studRef.limit(4).get();
+        let studentList = [];
+        data.docs.forEach(onSnapshot => {
+            studentList.push(onSnapshot.data())
+            console.log(onSnapshot.data());
+            setstudlist({ list: studentList });
+        })
+    }
+    useEffect(() => {
+        fetchList();
+    }, [])
+
 
     useEffect(() => {
         const sortArray = type => {
@@ -206,42 +239,76 @@ export default function LoS() {
                     </Mui.Box>
                 </Mui.Typography>
             </Mui.Box>
+            <Mui.Container>
+                <Mui.Box sx={style.details} >
 
-            <Mui.Box sx={style.label}>
-                <Mui.Box component="label" sx={style.studentLabel}>
-                    Year & Section
-                </Mui.Box>
-                <Mui.Box component="label" sx={style.studentLabel}>
-                    Reviews
-                </Mui.Box>
-                <Mui.Box component="label" sx={style.studentLabel}>
-                    Ratings
-                </Mui.Box>
-            </Mui.Box>
+                    <Mui.Box>
+                        <Mui.Typography>
+                            Year & Section
+                        </Mui.Typography>
+                    </Mui.Box>
+                    <Mui.Box >
+                        <Mui.Typography>
+                            Reviews
+                        </Mui.Typography>
+                    </Mui.Box>
+                    <Mui.Box>
+                        <Mui.Typography>
+                            Ratings
+                        </Mui.Typography>
+                    </Mui.Box>
 
-            <Mui.Box sx={style.studListContainer}>
 
-                {sData.map((data) => {
-                    return (
-                        <Mui.Paper sx={style.studListPaper} key={studentData.id}>
-                            <Mui.Box component="label">
-                                {data.id}
-                            </Mui.Box>
-                            <Mui.Box component="img" src={data.image}></Mui.Box>
-                            <Mui.Box component="label">
-                                {data.name}
-                            </Mui.Box>
-                            <Mui.Box component="label">
-                                BSIT{data.Ys}A
-                            </Mui.Box>
-                            <Mui.Box component="label">
-                                {data.review}
-                            </Mui.Box>
-                        </Mui.Paper>
-                    )
-                })}
-            </Mui.Box>
-        </Mui.Box>
+                </Mui.Box>
+
+                <Mui.Box sx={style.studListContainer}>
+                    {studlist && studlist.list.map((studlist) => {
+                        return (
+                            <Mui.Container>
+                                <Mui.Paper sx={style.studListPaper} key={studlist.id}>
+                                    <Link to="/evaluation" style={{ textDecoration: 'none', color: "white" }} >
+                                        <Mui.Box
+                                            sx={{
+                                                display: "flex",
+                                                flexWrap: "wrap",
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                                justifyContent: "space-between",
+                                            }} >
+                                            <Mui.Box sx={style.studImg}>
+                                                <Mui.Avatar src={studlist.profileImg} variant="square" alt="Profile Image" />
+                                            </Mui.Box>
+                                            <Mui.Box>
+                                                <Mui.Typography>
+                                                    {studlist.fullname}
+                                                </Mui.Typography>
+                                            </Mui.Box>
+                                            <Mui.Box sx={style.studDetails}>
+                                                <Mui.Box sx={style.studsubDetails}>
+                                                    <Mui.Typography>
+                                                        {studlist.course}
+                                                    </Mui.Typography>
+                                                </Mui.Box>
+                                                <Mui.Box sx={style.studsubDetails}>
+                                                    <Mui.Typography>
+                                                        {studlist.reviews}
+                                                    </Mui.Typography>
+                                                </Mui.Box>
+                                                <Mui.Box sx={style.studsubDetails}>
+                                                    <Mui.Typography>
+                                                        {studlist.ovrall_rating}
+                                                    </Mui.Typography>
+                                                </Mui.Box>
+                                            </Mui.Box>
+                                        </Mui.Box>
+                                    </Link>
+                                </Mui.Paper>
+                            </Mui.Container>
+                        )
+                    })}
+                </Mui.Box>
+            </Mui.Container>
+        </Mui.Box >
     );
 }
 

@@ -160,7 +160,11 @@ export default function Navbar() {
                         >
                             Student Review
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, alignContent: 'center', alignItems: 'center', justifyContent: 'center', justifyItems: 'center' }}>
+                        <Box sx={{
+                            flexGrow: 1, display: { xs: 'none', md: 'flex' },
+                            alignContent: 'center', alignItems: 'center',
+                            justifyContent: 'center', justifyItems: 'center'
+                        }}>
                             {links.map(link => (
                                 <Link style={{ textDecoration: 'none' }} onClick={handleCloseNavMenu} to={link.to}>
                                     <Button sx={{ my: 2, color: 'white', display: 'block' }}> {link.name} </Button>

@@ -3,13 +3,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import firebase from "../config/firebase";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, TwitterAuthProvider, FacebookAuthProvider } from "firebase/auth";
-
 
 const fbprovider = new FacebookAuthProvider();
 const googleprovider = new GoogleAuthProvider();
@@ -145,8 +144,8 @@ export default function LoginModal() {
   return (
     <Box>
       <Button onClick={handleOpen} variant="text" color="secondary">
-        <AccountCircleIcon>
-        </AccountCircleIcon>
+        <AccountCircleOutlinedIcon sx={{ color: 'white'}}/>
+    
       </Button>
       <Modal
         open={open}

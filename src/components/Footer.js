@@ -18,16 +18,16 @@ const style = {
 
     root: {
         background: "#131414",
-        marginTop:5,
+        marginTop: 5,
+        padding: 5,
     },
 
 
-
     colContainer: {
-        
+
         display: "flex",
         justifyContent: "center",
-   
+
 
     },
 
@@ -40,7 +40,7 @@ const style = {
             md: "1.25rem",
         },
         letterSpacing: "0.0625rem",
-        color:" #62666D"
+        color: " #62666D"
 
     },
     infoColor: {
@@ -57,13 +57,21 @@ const style = {
     },
 
     vectorStyle: {
-        color: theme => theme.palette.secondary.main,
+     
 
-        color: "#26CE8D",
+        color: "white",
         marginLeft: "1rem",
-        padding: 0,
+        padding: 1,
 
 
+        "&:hover": {
+            color: "white"
+        },
+        fontSize: {
+            xs: "1.6rem",
+            sm: "1.8rem",
+            md: "2rem",
+        },
 
     },
     footerStyle: {
@@ -85,9 +93,9 @@ export default function Footer() {
 
                         <Box sx={style.info}>
                             <Box sm item sx={style.colContainer}>
-                                <Typography sx={style.vectorStyle}> <Vector1 /></Typography>
-                                <Typography  sx={style.vectorStyle}>  <Vector2 /></Typography >
-                                <Typography  sx={style.vectorStyle}> <Vector3 /></Typography>
+                                <a href="https://www.twitter.com" >  <Typography sx={style.vectorStyle}> <Vector1 /></Typography></a>
+                                <a href="https://www.discord.com" >  <Typography sx={style.vectorStyle}>  <Vector2 /></Typography ></a>
+                                <a href="https://www.facebook.com" >  <Typography sx={style.vectorStyle}> <Vector3 /></Typography></a>
                             </Box>
 
 

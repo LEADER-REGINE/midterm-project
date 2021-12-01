@@ -17,27 +17,41 @@ const twitterprovider = new TwitterAuthProvider();
 const style = {
  Login : {
   position: 'absolute',
-  top: '50%',
-  left: '50%',
+  top: '22%',
+  left: '80%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 350,
   backgroundColor: "rgba(19, 20, 20 )",
   border: '2px solid #000',
   boxShadow: 24,
   borderRadius : "8px",
   p: 4,
   textAlign: "center",
+
  },
 
  loginButton : {
-  margin : "10px 10px",
+  margin : "5px 5px",
   backgroundColor : (theme) => theme.palette.secondary.main,
  },
+ modalTitle : {
+  padding : "5px 10px",
+  color : (theme) => theme.palette.common.white,
+  letterSpacing: "0.0625rem",
+  fontWeight:"light",
+ size:"1.125rem"
 
- modalText : {
+},
+ modalSubtitle : {
    padding : "5px 10px",
    color : (theme) => theme.palette.common.white,
+   letterSpacing: "0.0625rem",
+   fontWeight:"light",
+   fontSize:".75rem",
+ 
  },
+
+
 
  logoutButton : { 
    marginTop : "10px"
@@ -171,21 +185,22 @@ export default function LoginModal() {
           
 
         <Box sx={style.Login}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" sx = {style.modalText}>
+          <Typography id="modal-modal-title" variant="h6" component="h2" sx = {style.modalTitle}>
             Sign In
           </Typography>
-          <Typography id="modal-modal-description" sx = {style.modalText}>
+          <Typography id="modal-modal-description" sx = {style.modalSubtitle}>
             Sign in to review and rate students.
           </Typography>
           <Box>
             <Button variant="contained"  sx = {style.loginButton} >
-              <TwitterIcon />
+             
+            <FacebookIcon /> 
             </Button>
             <Button variant="contained"  sx = {style.loginButton} onClick={() => LoginWithGoogle()}>
-              <GoogleIcon />
+            <TwitterIcon /> 
             </Button>
             <Button variant="contained" sx = {style.loginButton}  onClick = {() => LoginWithFacebook()} >
-              <FacebookIcon />
+            <GoogleIcon />
               </Button>
             </Box>
           </Box>

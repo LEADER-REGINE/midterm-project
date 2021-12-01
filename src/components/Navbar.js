@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import LoginModal from './LoginModal';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -141,11 +141,11 @@ export default function Navbar() {
                             >
 
                                 {links.map(link => (
-                                    <Link onClick={handleCloseNavMenu} to={link.to}>
+                                    <NavLink onClick={handleCloseNavMenu} to={link.to} style={{ textDecoration: 'none' }}>
                                         <MenuItem key={link.to} onClick={handleCloseNavMenu}>
-                                            <Typography textAlign="center">{link.name}</Typography>
+                                            <Typography textAlign="center" sx={{ my: 2, color: 'black', display: 'block' }}>{link.name}</Typography>
                                         </MenuItem>
-                                    </Link>
+                                    </NavLink>
                                 )
                                 )}
                             </Menu>
@@ -158,10 +158,11 @@ export default function Navbar() {
                         >
                             Student Review
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, alignContent: 'center', alignItems: 'center', justifyContent: 'center', justifyItems: 'center' }}>
                             {links.map(link => (
-                                <Link onClick={handleCloseNavMenu} to={link.to}>{link.name}</Link>
-                            )
+                                <Link style={{ textDecoration: 'none' }} onClick={handleCloseNavMenu} to={link.to}>
+                                    <Button sx={{ my: 2, color: 'white', display: 'block' }}> {link.name} </Button>
+                                </Link>)
                             )}
                         </Box>
                         <LoginModal />

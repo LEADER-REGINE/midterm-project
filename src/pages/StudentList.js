@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import * as Mui from '@mui/material';
 import TopStudents from '../components/TopStudents';
 import LoS from '../components/LoS';
+import { Helmet } from "react-helmet";
 
 const style = {
     header: {
@@ -53,6 +54,12 @@ function StudentList() {
 
     return (
         <Mui.Box sx={style.root}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Student List</title>
+                <meta name="description" content="View list of students and ratings" />
+                <meta name="keywords" content="Review, Ratings, Student Review, Student Ratings" />
+            </Helmet>
             <Mui.Box color="background">
                 <Mui.Box component="label" sx={style.topStudent}>
                     Top Students

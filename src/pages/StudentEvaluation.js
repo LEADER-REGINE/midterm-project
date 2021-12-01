@@ -4,7 +4,7 @@ import { getTheme } from '../redux/actions/uiAction';
 import React, { useEffect, useState } from 'react';
 import * as Mui from '@mui/material';
 import StudentProfile from "../components/StudentProfile";
-
+import { Helmet } from "react-helmet";
 const style = {
 
     header: {
@@ -65,6 +65,12 @@ function StudentEvaluation() {
 
     return (
         <Mui.Box>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Student Evaluation</title>
+                <meta name="description" content="View in-depth student review details and evaluate students" />
+                <meta name="keywords" content="Review, Ratings, Student Review, Student Ratings" />
+            </Helmet>
             <Mui.Box sx={style.header}>
                 <StudentProfile />
             </Mui.Box>

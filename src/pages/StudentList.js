@@ -16,15 +16,10 @@ import TopStudents from '../components/TopStudents';
 import LoS from '../components/LoS';
 
 const style = {
-
-
     header: {
-        position: "absolute",
-        width: "1519.5px",
-        height: "1995px",
+        width: "100%",
         background: "#131414",
     },
-
     topStudent: {
         position: "static",
         fontFamily: "Roboto",
@@ -54,7 +49,6 @@ const style = {
             md: "38px",
         },
     },
-
     studentContainer: {
         display: "flex",
         flexDirection: "row",
@@ -64,17 +58,10 @@ const style = {
             md: "324px",
         },
         flexWrap: "wrap",
-
-
         "@media only screen and (max-width : 720px)": {
             flexDirection: "column",
-
-
-
         }
-
     },
-
     studentPaper: {
         height: {
             xs: "70px",
@@ -96,141 +83,9 @@ const style = {
 
         "@media only screen and (max-width : 720px)": {
             marginTop: "10px",
-
-
         }
 
     },
-    studentImage: {
-        marginTop: "19.67px",
-        marginLeft: "16.67px",
-        marginBottom: "48.67px",
-        marginRight: "6.67px",
-        height: {
-            xs: "30px",
-            sm: "38px",
-            md: "42.67px",
-        },
-        width: {
-            xs: "30px",
-            sm: "38px",
-            md: "42.67px",
-        },
-        borderRadius: "5px",
-        border: "2px solid #303336",
-    },
-    reviewContainer: {
-        display: "flex",
-        flexDirection: "column",
-
-    },
-    studentName: {
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "500",
-        fontSize: {
-            xs: "10px",
-            sm: "12px",
-            md: "14px",
-        },
-        marginTop: "21px",
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        color: "#D1D4C9",
-        marginRight: "6.67px"
-    },
-    studentReview: {
-        fontFamily: "Roboto",
-        fontSize: {
-            xs: "10px",
-            sm: "12px",
-            md: "14px",
-        },
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        color: "#62666D",
-    },
-
-    sortContainer: {
-        marginTop: "57px",
-        marginLeft: "650px",
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        "@media only screen and (max-width : 720px)": {
-
-            marginLeft: "15px"
-
-        }
-
-    },
-
-    sort: {
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        fontWeight: 500,
-        fontSize: "12px",
-        color: "#D1D4C9",
-
-    },
-
-    filter: {
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        fontWeight: 500,
-        fontSize: "12px",
-        color: "#D1D4C9",
-        marginLeft: "10px",
-        "@media only screen and (max-width : 720px)": {
-            marginLeft: "0px"
-
-        }
-    },
-
-    formControl: {
-        margin: (theme) => theme.spacing(1),
-        minWidth: 120,
-
-    },
-
-    dropDown: {
-        border: "1px solid #303336",
-        boxSizing: "border-box",
-        borderRadius: "8px",
-        fontSize: "12px",
-        color: "#D1D4C9",
-    },
-
-    label: {
-        display: "flex",
-        justifyContent: "row",
-        alignItems: "center",
-        marginTop: "20px",
-        marginLeft: "761px"
-    },
-
-    studentLabel: {
-        fontSize: "14px",
-        marginRight: "100px",
-        color: "#62666D",
-        marginBottom: "20px",
-    },
-
-    studListPaper: {
-
-        width: "906px",
-        height: "64px",
-        alignItems: "center",
-        marginLeft: "324px",
-        marginBottom: "12px",
-        backgroundColor: "#1E1F20",
-    }
-
-
 };
 
 
@@ -241,24 +96,17 @@ function StudentList() {
         dispatch(getTheme());
     }, [dispatch]);
 
-
-
     return (
         <Mui.Box sx={style.root}>
-            <Navbar />
-            <Mui.Box sx={style.header}>
+            <Mui.Box color="background">
                 <Mui.Box component="label" sx={style.topStudent}>
                     Top Students
                 </Mui.Box>
                 <TopStudents />
                 <LoS />
-                <Footer />
             </Mui.Box>
 
         </Mui.Box >
-
-
-
 
     );
 }

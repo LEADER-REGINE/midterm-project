@@ -143,82 +143,8 @@ const style = {
         color: "#62666D",
     },
 
-    sortContainer: {
-        marginTop: "57px",
-        marginLeft: "650px",
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        "@media only screen and (max-width : 720px)": {
 
-            marginLeft: "15px"
 
-        }
-
-    },
-
-    sort: {
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        fontWeight: 500,
-        fontSize: "12px",
-        color: "#D1D4C9",
-
-    },
-
-    filter: {
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-        fontWeight: 500,
-        fontSize: "12px",
-        color: "#D1D4C9",
-        marginLeft: "10px",
-        "@media only screen and (max-width : 720px)": {
-            marginLeft: "0px"
-
-        }
-    },
-
-    formControl: {
-        margin: (theme) => theme.spacing(1),
-        minWidth: 120,
-
-    },
-
-    dropDown: {
-        border: "1px solid #303336",
-        boxSizing: "border-box",
-        borderRadius: "8px",
-        fontSize: "12px",
-        color: "#D1D4C9",
-    },
-
-    label: {
-        display: "flex",
-        justifyContent: "row",
-        alignItems: "center",
-        marginTop: "20px",
-        marginLeft: "761px"
-    },
-
-    studentLabel: {
-        fontSize: "14px",
-        marginRight: "100px",
-        color: "#62666D",
-        marginBottom: "20px",
-    },
-
-    studListPaper: {
-
-        width: "906px",
-        height: "64px",
-        alignItems: "center",
-        marginLeft: "324px",
-        marginBottom: "12px",
-        backgroundColor: "#1E1F20",
-    }
 
 
 };

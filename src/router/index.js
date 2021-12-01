@@ -5,7 +5,8 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import StudentList from '../pages/StudentList';
 import { useSelector } from 'react-redux';
-
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function RouterComponent() {
     const ui = useSelector((state) => state.ui);
@@ -28,7 +29,7 @@ export default function RouterComponent() {
             error: {
                 main: '#FC7374',
             },
-            logo1 : {
+            logo1: {
                 main: '#4267B2',
             },
 
@@ -61,7 +62,7 @@ export default function RouterComponent() {
             },
             background: {
                 paper: '#f9fbfd',
-                default: '#E8E9EC',
+                default: '#1E1F20',
             },
         },
 
@@ -73,9 +74,11 @@ export default function RouterComponent() {
         <ThemeProvider theme={ui.isDarkMode ? darkTheme : lightTheme}>
             <CssBaseline />
             <Router>
+                <Navbar />
                 <Switch >
                     <Route exact component={StudentList} path="/" />
                 </Switch >
+                <Footer />
             </Router>
         </ThemeProvider>
     );

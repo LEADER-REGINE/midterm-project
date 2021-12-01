@@ -12,8 +12,12 @@ const style = {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-evenly",
+        flexWrap : "wrap",
+        background : "#131414",
+        paddingTop : "0",
         "@media only screen and (max-width : 720px)": {
-            flexDirection: "column",
+            justifyContent : "center",
+            alignItems : "center"
         }
 
     },
@@ -124,7 +128,7 @@ export default function TopStudents() {
 
 
     return (
-        <Mui.Container>
+        <Mui.Container sx = {style.container}>
             <Mui.Box sx={style.studentContainer}>
                 {
                     studlist && studlist.list.map((studlist) => {

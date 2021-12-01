@@ -18,8 +18,6 @@ const style = {
 
     root: {
         background: "#131414",
-        marginTop: 5,
-        padding: 5,
     },
 
 
@@ -40,7 +38,7 @@ const style = {
             md: "1.25rem",
         },
         letterSpacing: "0.0625rem",
-        color: " #62666D"
+        color: "#62666D"
 
     },
     infoColor: {

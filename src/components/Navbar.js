@@ -99,7 +99,7 @@ export default function Navbar() {
         setAnchorElUser(null);
     };
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1}}>
             <AppBar position="static" sx={style.appBar}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>

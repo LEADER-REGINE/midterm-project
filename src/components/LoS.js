@@ -131,26 +131,35 @@ const style = {
         float: "right",
     },
     studImg: {
-        padding: "25px",
+        paddingLeft : "61.33px"
     },
     studDetails: {
-        padding: "25px",
         display: "flex",
         flexWrap: "wrap",
         flexDirection: "row",
         alignItems: "center",
+        justifyContent : "flex-end"
     },
 
     studsubDetails: {
-        paddingLeft: "25px",
-        paddingRight: "25px",
+      
     },
 
     details: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "flex-end",
+        justifyContent: "center",
+        paddingLeft : "689px"
     },
+    studListContainer : {
+        paddingBottom : "868px"
+    },
+    stdLabel : {
+        paddingLeft : "100px"
+    },
+    studName : {
+        paddingLeft : "7.33px"
+    }
 
 };
 
@@ -247,12 +256,12 @@ export default function LoS() {
                             Year & Section
                         </Mui.Typography>
                     </Mui.Box>
-                    <Mui.Box >
+                    <Mui.Box  sx = {style.stdLabel}>
                         <Mui.Typography>
                             Reviews
                         </Mui.Typography>
                     </Mui.Box>
-                    <Mui.Box>
+                    <Mui.Box sx = {style.stdLabel}>
                         <Mui.Typography>
                             Ratings
                         </Mui.Typography>
@@ -270,15 +279,14 @@ export default function LoS() {
                                         <Mui.Box
                                             sx={{
                                                 display: "flex",
-                                                flexWrap: "wrap",
                                                 flexDirection: "row",
                                                 alignItems: "center",
-                                                justifyContent: "space-between",
+                                                justifyContent: "flex-start",
                                             }} >
                                             <Mui.Box sx={style.studImg}>
                                                 <Mui.Avatar src={studlist.profileImg} variant="square" alt="Profile Image" />
                                             </Mui.Box>
-                                            <Mui.Box>
+                                            <Mui.Box sx = {style.studName} >
                                                 <Mui.Typography>
                                                     {studlist.fullname}
                                                 </Mui.Typography>

@@ -8,7 +8,7 @@ import LoS from '../components/LoS';
 import { Helmet } from "react-helmet";
 
 const style = {
-    header: {
+    root: {
         width: "100%",
         background: "#131414",
     },
@@ -20,25 +20,13 @@ const style = {
             sm: "14px",
             md: "18px",
         },
-        lineHeight: "20px",
+        background: "#131414",
         display: "flex",
         alignItems: "center",
         textAlign: "center",
         color: "white",
-        flex: "none",
-        order: "0",
-        flexGrow: "0",
-
-        marginTop: {
-            xs: "20px",
-            sm: "30px",
-            md: "38px",
-        },
-        marginBottom: {
-            xs: "20px",
-            sm: "30px",
-            md: "38px",
-        },
+        paddingTop : "38px",
+        paddingBottom : "0px"
     },
 
 };

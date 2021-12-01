@@ -1,22 +1,12 @@
 import '../App.css';
-import { useDispatch } from 'react-redux';
-import { getTheme } from '../redux/actions/uiAction';
-import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import * as Mui from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import { studentData } from './studentinfo';
-import Footer from "../components/Footer"
 
+import React, { useEffect, useState } from 'react';
+import * as Mui from '@mui/material';
 import firebase from "../config/firebase";
 import { onSnapshot } from '@firebase/firestore';
-import TopStudents from '../components/TopStudents';
-import LoS from '../components/LoS';
+
 
 const style = {
-
 
     header: {
         position: "absolute",
@@ -234,33 +224,44 @@ const style = {
 };
 
 
-function StudentList() {
-    const dispatch = useDispatch();
+export default function TopStudents() {
+    const db = firebase.firestore();
+    const [studlist, setstudlist] = useState({
+        list: [],
+    })
 
+    const fetchList = async () => {
+        const studRef = db.collection('students');
+        const data = await studRef.limit(4).get();
+        let studentList = [];
+        data.docs.forEach(onSnapshot => {
+            studentList.push(onSnapshot.data())
+            console.log(onSnapshot.data());
+            setstudlist({ list: studentList });
+        })
+    }
     useEffect(() => {
-        dispatch(getTheme());
-    }, [dispatch]);
-
+        fetchList();
+    }, [])
 
 
     return (
-        <Mui.Box sx={style.root}>
-            <Navbar />
-            <Mui.Box sx={style.header}>
-                <Mui.Box component="label" sx={style.topStudent}>
-                    Top Students
-                </Mui.Box>
-                <TopStudents />
-                <LoS />
-                <Footer />
-            </Mui.Box>
+        <Mui.Box sx={style.studentContainer}>
+            {
+                studlist && studlist.list.map((studlist) => {
+                    return (
 
-        </Mui.Box >
-
-
-
-
+                        <Mui.Paper sx={style.studentPaper} elevation="10" key={studlist.fullname}>
+                            <Mui.Box component="img" src={studlist.profileImg} sx={style.studentImage}></Mui.Box>
+                            <Mui.Box sx={style.reviewContainer}>
+                                <Mui.Box component="label" sx={style.studentName}>{studlist.fullname}</Mui.Box>
+                                <Mui.Box component="label" sx={style.studentReview}>{studlist.reviews} reviews</Mui.Box>
+                            </Mui.Box>
+                        </Mui.Paper>
+                    )
+                })
+            }
+        </Mui.Box>
     );
 }
 
-export default StudentList;

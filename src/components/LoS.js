@@ -1,22 +1,15 @@
 import '../App.css';
-import { useDispatch } from 'react-redux';
-import { getTheme } from '../redux/actions/uiAction';
+
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import * as Mui from '@mui/material';
+import firebase from "../config/firebase";
+import { onSnapshot } from '@firebase/firestore';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { studentData } from './studentinfo';
-import Footer from "../components/Footer"
-
-import firebase from "../config/firebase";
-import { onSnapshot } from '@firebase/firestore';
-import TopStudents from '../components/TopStudents';
-import LoS from '../components/LoS';
+import { studentData } from '../pages/studentinfo';
 
 const style = {
-
 
     header: {
         position: "absolute",
@@ -234,33 +227,105 @@ const style = {
 };
 
 
-function StudentList() {
-    const dispatch = useDispatch();
+export default function LoS() {
+    const sData = studentData;
+    const [filter, setFilter] = React.useState('');
+
+
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('');
 
     useEffect(() => {
-        dispatch(getTheme());
-    }, [dispatch]);
+        const sortArray = type => {
+            const types = {
+                name: 'name',
+                Ys: 'Ys',
+                review: 'review',
+            };
+            const sortProperty = types[type];
+            const sorted = [...studentData].sort((a, b) => b[sortProperty] - a[sortProperty]);
+            console.log(sorted)
+            setData(sorted);
+        };
+        sortArray(sortType);
+    }, [sortType]);
 
+
+    const handleFilter = (event) => {
+        setFilter(event.target.value);
+    };
 
 
     return (
-        <Mui.Box sx={style.root}>
-            <Navbar />
-            <Mui.Box sx={style.header}>
-                <Mui.Box component="label" sx={style.topStudent}>
-                    Top Students
+        <Mui.Box>
+            <Mui.Box sx={style.sortContainer}>
+                <Mui.Box component="label" sx={style.sort}>
+                    Sort By :
+                    <Mui.Box>
+                        <FormControl sx={style.formControl} size="small">
+                            <Select onChange={(e) => setSortType(e.target.value)} sx={style.dropDown}>
+                                <MenuItem value="Most Recent">
+                                    Most Recent
+                                </MenuItem>
+                                <MenuItem value="name">Name</MenuItem>
+                                <MenuItem value="Ys">Year & Section</MenuItem>
+                                <MenuItem value="review">Reviews</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Mui.Box>
                 </Mui.Box>
-                <TopStudents />
-                <LoS />
-                <Footer />
+                <Mui.Typography sx={style.filter}>
+                    Filter :
+                    <Mui.Box>
+                        <FormControl sx={style.formControl} size="small">
+                            <Select value={filter} onChange={handleFilter} sx={style.dropDown}>
+                                <MenuItem value="No Filter">
+                                    No Filter
+                                </MenuItem>
+                                <MenuItem value="Name">Name</MenuItem>
+                                <MenuItem value="Ys">Year & Section</MenuItem>
+                                <MenuItem value="Reviews">Reviews</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Mui.Box>
+                </Mui.Typography>
             </Mui.Box>
 
-        </Mui.Box >
+            <Mui.Box sx={style.label}>
+                <Mui.Box component="label" sx={style.studentLabel}>
+                    Year & Section
+                </Mui.Box>
+                <Mui.Box component="label" sx={style.studentLabel}>
+                    Reviews
+                </Mui.Box>
+                <Mui.Box component="label" sx={style.studentLabel}>
+                    Ratings
+                </Mui.Box>
+            </Mui.Box>
 
+            <Mui.Box sx={style.studListContainer}>
 
-
-
+                {sData.map((data) => {
+                    return (
+                        <Mui.Paper sx={style.studListPaper} key={studentData.id}>
+                            <Mui.Box component="label">
+                                {data.id}
+                            </Mui.Box>
+                            <Mui.Box component="img" src={data.image}></Mui.Box>
+                            <Mui.Box component="label">
+                                {data.name}
+                            </Mui.Box>
+                            <Mui.Box component="label">
+                                BSIT{data.Ys}A
+                            </Mui.Box>
+                            <Mui.Box component="label">
+                                {data.review}
+                            </Mui.Box>
+                        </Mui.Paper>
+                    )
+                })}
+            </Mui.Box>
+        </Mui.Box>
     );
 }
 
-export default StudentList;

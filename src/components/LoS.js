@@ -173,7 +173,7 @@ export default function LoS() {
 
 
     return (
-        <Mui.Box>
+        <Mui.Box sx={style.header}>
             <Mui.Box sx={style.sortContainer}>
                 <Mui.Box component="label" sx={style.sort}>
                     Sort By :

@@ -2,7 +2,8 @@ import * as actionTypes from "../types";
 
 const initialState = {
     isDarkMode: false,
-    lang: "en"
+    lang: "en",
+    userID: "1",
 }
 
 function uiReducer(state = initialState, action) {
@@ -10,6 +11,10 @@ function uiReducer(state = initialState, action) {
         case actionTypes.SET_THEME:
             return {
                 ...state, isDarkMode: action.payload,
+            };
+        case actionTypes.USER_ID:
+            return {
+                ...state, userID: action.payload,
             };
         default:
             return {

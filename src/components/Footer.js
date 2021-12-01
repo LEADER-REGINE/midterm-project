@@ -57,21 +57,12 @@ const style = {
     },
 
     vectorStyle: {
-     
+        color: theme => theme.palette.secondary.main,
 
-        color: "white",
         marginLeft: "1rem",
         padding: 1,
 
 
-        "&:hover": {
-            color: "white"
-        },
-        fontSize: {
-            xs: "1.6rem",
-            sm: "1.8rem",
-            md: "2rem",
-        },
 
     },
     footerStyle: {

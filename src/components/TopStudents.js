@@ -42,7 +42,6 @@ const style = {
         backgroundColor: "#1E1F20",
         display: "flex",
         alignItems: "flex-start",
-        position: "static",
         border: "1px solid #303336",
 
         "@media only screen and (max-width : 720px)": {
@@ -87,7 +86,6 @@ const style = {
         marginTop: "21px",
         display: "flex",
         alignItems: "center",
-        textAlign: "center",
         color: "#D1D4C9",
         marginRight: "6.67px"
     },

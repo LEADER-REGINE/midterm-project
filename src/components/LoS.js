@@ -12,6 +12,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTheme, getID } from '../redux/actions/uiAction';
 import { setID } from '../redux/actions/uiAction';
+import { display } from '@mui/system';
 
 const style = {
     studentImage: {
@@ -101,7 +102,7 @@ const style = {
     },
 
     formControl: {
-        margin: (theme) => theme.spacing(1),
+        margin: (theme) => theme.spacing(0.5),
         minWidth: 120,
 
     },
@@ -117,44 +118,48 @@ const style = {
 
     studentLabel: {
         fontSize: "14px",
-
         color: "#62666D",
         marginBottom: "20px",
     },
 
     studListPaper: {
-
-        display: "flex",
-        flexDirection: "column",
-        marginBottom: "12px",
         backgroundColor: "#1E1F20",
+        height : "64px",
+        width : "1100px",
+        flexDirection : "row",
+        marginBottom : "12px"
     },
-    studListDetails: {
-        float: "right",
+    imgFname : {
+    display: "flex",
+    alignItems: "center",
+    marginTop : "13.33px"
     },
     studImg: {
         paddingLeft : "61.33px"
     },
     studDetails: {
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent : "flex-end"
+        display : "flex",
+        marginLeft : "477px",
     },
 
     studsubDetails: {
-      
+     display : "flex",
+     marginLeft : "700px",
+     marginTop : "-30.33px"
     },
 
     details: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
-        paddingLeft : "689px"
+        justifyContent: "space-between",
+        paddingLeft : "680px",
+        margin : "20px",
+        color : "#62666D",
     },
     studListContainer : {
-        paddingBottom : "868px"
+        display: "flex",
+        alignItems: "center",
+        flexDirection : "column"
     },
     stdLabel : {
         paddingLeft : "100px"
@@ -268,8 +273,6 @@ export default function LoS() {
                 <Mui.Box sx={style.studListContainer}>
                     {studlist && studlist.list.map((studlist) => {
                         return (
-                            <Mui.Container>
-
                                 <Mui.Paper sx={style.studListPaper} key={studlist.id}>
                                     <Link
                                         style={{ textDecoration: 'none', color: "white" }}
@@ -279,13 +282,7 @@ export default function LoS() {
                                             state: { uid: studlist.id }
                                         }}
                                     >
-                                        <Mui.Box
-                                            sx={{
-                                                display: "flex",
-                                                flexDirection: "row",
-                                                alignItems: "center",
-                                                justifyContent: "flex-start",
-                                            }} >
+                                        <Mui.Box sx = {style.imgFname}>
                                             <Mui.Box sx={style.studImg}>
                                                 <Mui.Avatar src={studlist.profileImg} variant="square" alt="Profile Image" />
                                             </Mui.Box>
@@ -294,27 +291,23 @@ export default function LoS() {
                                                     {studlist.fullname}
                                                 </Mui.Typography>
                                             </Mui.Box>
-                                            <Mui.Box sx={style.studDetails}>
-                                                <Mui.Box sx={style.studsubDetails}>
-                                                    <Mui.Typography>
+                                        </Mui.Box>
+                                        <Mui.Box sx = {style.studsubDetails}>
+                                                    <Mui.Typography >
                                                         {studlist.course}
                                                     </Mui.Typography>
-                                                </Mui.Box>
-                                                <Mui.Box sx={style.studsubDetails}>
-                                                    <Mui.Typography>
+                                                    <Mui.Typography >
                                                         {studlist.reviews}
                                                     </Mui.Typography>
-                                                </Mui.Box>
-                                                <Mui.Box sx={style.studsubDetails}>
                                                     <Mui.Typography>
                                                         {studlist.ovrall_rating}
                                                     </Mui.Typography>
-                                                </Mui.Box>
-                                            </Mui.Box>
                                         </Mui.Box>
+                                        
+                                                    
+                                            
                                     </Link>
                                 </Mui.Paper>
-                            </Mui.Container>
                         )
                     })}
                 </Mui.Box>

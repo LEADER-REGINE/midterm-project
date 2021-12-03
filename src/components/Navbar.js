@@ -80,6 +80,9 @@ const links = [
     },
 ]
 
+
+
+
 export default function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -99,7 +102,7 @@ export default function Navbar() {
         setAnchorElUser(null);
     };
     return (
-        <Box sx={{ flexGrow: 1}}>
+        <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={style.appBar}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
@@ -166,9 +169,22 @@ export default function Navbar() {
                             justifyContent: 'center', justifyItems: 'center'
                         }}>
                             {links.map(link => (
-                                <Link style={{ textDecoration: 'none' }} onClick={handleCloseNavMenu} to={link.to}>
-                                    <Button sx={{ my: 2, color: 'white', display: 'block' }}> {link.name} </Button>
-                                </Link>)
+                                <NavLink 
+                                    style={
+                                        isActive => ({
+                                        color: isActive ? "#26CE8D" : "#D1D4C9",
+                                        borderTop: isActive ? '3px solid #26CE8D': '0px solid #26CE8D',
+                                        textDecoration: 'none',
+                                        margin: '20px',
+                                       
+                                        })} 
+                                  onClick={handleCloseNavMenu} 
+                                  to={link.to}  
+                                  exact={true}
+                                >
+                                    {link.name}
+                                    {/* <Button sx={{ my: 2, color: 'white', display: 'block' }} style={{ textDecoration: 'none' }}> {link.name} </Button> */}
+                                </NavLink>)
                             )}
                         </Box>
                         <LoginModal />

@@ -41,13 +41,14 @@ export default function CommentSection() {
                                         <CommentIcon />
                                         <Typography>Reply</Typography>
                                     </Button>
-                                </Box>
-                                <Box>
+
                                     <Button>
                                         <PriorityHighIcon />
                                         <Typography>Report</Typography>
                                     </Button>
+
                                 </Box>
+
 
                             </Paper>
                         );

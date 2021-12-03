@@ -15,47 +15,47 @@ const googleprovider = new GoogleAuthProvider();
 const twitterprovider = new TwitterAuthProvider();
 
 const style = {
- Login : {
-  position: 'absolute',
-  top: '22%',
-  left: '80%',
-  transform: 'translate(-50%, -50%)',
-  width: 350,
-  backgroundColor: "rgba(19, 20, 20 )",
-  border: '2px solid #000',
-  boxShadow: 24,
-  borderRadius : "8px",
-  p: 4,
-  textAlign: "center",
+  Login: {
+    position: 'absolute',
+    top: '22%',
+    left: '80%',
+    transform: 'translate(-50%, -50%)',
+    width: 350,
+    backgroundColor: "rgba(19, 20, 20 )",
+    border: '2px solid #000',
+    boxShadow: 24,
+    borderRadius: "8px",
+    p: 4,
+    textAlign: "center",
 
- },
+  },
 
- loginButton : {
-  margin : "5px 5px",
-  backgroundColor : (theme) => theme.palette.secondary.main,
- },
- modalTitle : {
-  padding : "5px 10px",
-  color : (theme) => theme.palette.common.white,
-  letterSpacing: "0.0625rem",
-  fontWeight:"light",
- size:"1.125rem"
+  loginButton: {
+    margin: "5px 5px",
+    backgroundColor: (theme) => theme.palette.secondary.main,
+  },
+  modalTitle: {
+    padding: "5px 10px",
+    color: (theme) => theme.palette.common.white,
+    letterSpacing: "0.0625rem",
+    fontWeight: "light",
+    size: "1.125rem"
 
-},
- modalSubtitle : {
-   padding : "5px 10px",
-   color : (theme) => theme.palette.common.white,
-   letterSpacing: "0.0625rem",
-   fontWeight:"light",
-   fontSize:".75rem",
- 
- },
+  },
+  modalSubtitle: {
+    padding: "5px 10px",
+    color: (theme) => theme.palette.common.white,
+    letterSpacing: "0.0625rem",
+    fontWeight: "light",
+    fontSize: ".75rem",
+
+  },
 
 
 
- logoutButton : { 
-   marginTop : "10px"
- }
+  logoutButton: {
+    marginTop: "10px"
+  }
 };
 const auth = getAuth();
 const user = auth.currentUser;
@@ -143,7 +143,7 @@ export default function LoginModal() {
 
   const logout = (e) => {
     signOut(auth).then(() => {
-      // Sign-out successful.
+      localStorage.removeItem("email");
     }).catch((error) => {
       // An error happened.
     });
@@ -151,15 +151,18 @@ export default function LoginModal() {
 
   getAuth().onAuthStateChanged(function (user) {
     setIsLoggedIn(user);
-    if (user !== null)
+    if (user !== null) {
       setName(user.displayName);
+      localStorage.setItem("email", user.email);
+    }
+
   });
 
   return (
     <Box>
       <Button onClick={handleOpen} variant="text" color="secondary">
-        <AccountCircleOutlinedIcon sx={{ color: 'white'}}/>
-    
+        <AccountCircleOutlinedIcon sx={{ color: 'white' }} />
+
       </Button>
       <Modal
         open={open}
@@ -170,37 +173,38 @@ export default function LoginModal() {
         {isLoggedin ?
 
           <Box sx={style.Login}>
-              <Typography id="modal-modal-title" variant="h6" component="h2" color = " white">
-                {
-                  name
-                }
+            <Typography id="modal-modal-title" variant="h6" component="h2" color=" white">
+              {
+                name
+              }
             </Typography>
-            <Button variant="contained" color="error" onClick={logout} sx = {style.logoutButton}>
+            <Button variant="contained" color="error" onClick={logout} sx={style.logoutButton}>
               <Typography>
                 Sign Out
               </Typography>
             </Button>
           </Box>
           :
-          
 
-        <Box sx={style.Login}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" sx = {style.modalTitle}>
-            Sign In
-          </Typography>
-          <Typography id="modal-modal-description" sx = {style.modalSubtitle}>
-            Sign in to review and rate students.
-          </Typography>
-          <Box>
-            <Button variant="contained"  sx = {style.loginButton} >
-             
-            <FacebookIcon /> 
-            </Button>
-            <Button variant="contained"  sx = {style.loginButton} onClick={() => LoginWithGoogle()}>
-            <TwitterIcon /> 
-            </Button>
-            <Button variant="contained" sx = {style.loginButton}  onClick = {() => LoginWithFacebook()} >
-            <GoogleIcon />
+
+          <Box sx={style.Login}>
+            <Typography id="modal-modal-title" variant="h6" component="h2" sx={style.modalTitle}>
+              Sign In
+            </Typography>
+            <Typography id="modal-modal-description" sx={style.modalSubtitle}>
+              Sign in to review and rate students.
+            </Typography>
+            <Box>
+              <Button variant="contained" sx={style.loginButton} >
+                <TwitterIcon />
+
+              </Button>
+              <Button variant="contained" sx={style.loginButton} onClick={() => LoginWithGoogle()}>
+
+                <GoogleIcon />
+              </Button>
+              <Button variant="contained" sx={style.loginButton} onClick={() => LoginWithFacebook()} >
+                <FacebookIcon />
               </Button>
             </Box>
           </Box>

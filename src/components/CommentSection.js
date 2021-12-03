@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 
 import firebase from "../config/firebase";
-import { Paper, Typography } from '@mui/material';
+import { Container, Paper, Typography } from '@mui/material';
 
 
 export default function CommentSection() {
@@ -25,12 +25,20 @@ export default function CommentSection() {
         fetchComments();
     }, [])
 
-
     return (
         <Box>
-            <Paper>
-                <Typography> Test</Typography>
-            </Paper>
+            <Container>
+                {commentsList &&
+                    commentsList.list.map((commentsList) => {
+                        return (
+                            <Paper>
+                                <Typography>{commentsList.email}</Typography>
+                                <Typography>{commentsList.review}</Typography>
+                                <Typography>{commentsList.final_rating}</Typography>
+                            </Paper>
+                        );
+                    })}
+            </Container>
         </Box>
     );
 

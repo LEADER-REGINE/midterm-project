@@ -32,21 +32,19 @@ export default function CommentSection() {
                 {commentsList &&
                     commentsList.list.map((commentsList) => {
                         return (
-                            <Paper>
+                            <Paper key={commentsList.id}>
                                 <Typography>{commentsList.email}</Typography>
-                                <Typography>{commentsList.review}</Typography>
                                 <Typography>{commentsList.final_rating}</Typography>
+                                <Typography>{commentsList.review}</Typography>
                                 <Box>
                                     <Button>
                                         <CommentIcon />
                                         <Typography>Reply</Typography>
                                     </Button>
-
                                     <Button>
                                         <PriorityHighIcon />
                                         <Typography>Report</Typography>
                                     </Button>
-
                                 </Box>
 
 

@@ -1,66 +1,67 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import firebase from "../config/firebase";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, TwitterAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  TwitterAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
 
 const fbprovider = new FacebookAuthProvider();
 const googleprovider = new GoogleAuthProvider();
 const twitterprovider = new TwitterAuthProvider();
 
 const style = {
- Login : {
-  position: 'absolute',
-  top: '22%',
-  left: '80%',
-  transform: 'translate(-50%, -50%)',
-  width: 350,
-  backgroundColor: "rgba(19, 20, 20 )",
-  border: '2px solid #000',
-  boxShadow: 24,
-  borderRadius : "8px",
-  p: 4,
-  textAlign: "center",
+  Login: {
+    position: "absolute",
+    top: "22%",
+    left: "80%",
+    transform: "translate(-50%, -50%)",
+    width: 350,
+    backgroundColor: "rgba(19, 20, 20 )",
+    border: "2px solid #000",
+    boxShadow: 24,
+    borderRadius: "8px",
+    p: 4,
+    textAlign: "center",
+  },
 
- },
+  loginButton: {
+    margin: "5px 5px",
+    backgroundColor: (theme) => theme.palette.secondary.main,
+  },
+  modalTitle: {
+    padding: "5px 10px",
+    color: (theme) => theme.palette.common.white,
+    letterSpacing: "0.0625rem",
+    fontWeight: "light",
+    size: "1.125rem",
+  },
+  modalSubtitle: {
+    padding: "5px 10px",
+    color: (theme) => theme.palette.common.white,
+    letterSpacing: "0.0625rem",
+    fontWeight: "light",
+    fontSize: ".75rem",
+  },
 
- loginButton : {
-  margin : "5px 5px",
-  backgroundColor : (theme) => theme.palette.secondary.main,
- },
- modalTitle : {
-  padding : "5px 10px",
-  color : (theme) => theme.palette.common.white,
-  letterSpacing: "0.0625rem",
-  fontWeight:"light",
- size:"1.125rem"
-
-},
- modalSubtitle : {
-   padding : "5px 10px",
-   color : (theme) => theme.palette.common.white,
-   letterSpacing: "0.0625rem",
-   fontWeight:"light",
-   fontSize:".75rem",
- 
- },
-
-
-
- logoutButton : { 
-   marginTop : "10px"
- }
+  logoutButton: {
+    marginTop: "10px",
+  },
 };
 const auth = getAuth();
 const user = auth.currentUser;
 function LoginWithGoogle() {
-
   signInWithPopup(auth, googleprovider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -69,7 +70,8 @@ function LoginWithGoogle() {
       // The signed-in user info.
       const user = result.user;
       // ...
-    }).catch((error) => {
+    })
+    .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -79,7 +81,6 @@ function LoginWithGoogle() {
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
     });
-
 }
 
 function LoginWithTwitter() {
@@ -94,7 +95,8 @@ function LoginWithTwitter() {
       // The signed-in user info.
       const user = result.user;
       // ...
-    }).catch((error) => {
+    })
+    .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -103,7 +105,6 @@ function LoginWithTwitter() {
       // The AuthCredential type that was used.
       const credential = TwitterAuthProvider.credentialFromError(error);
       // ...
-
     });
 }
 
@@ -133,33 +134,34 @@ function LoginWithFacebook() {
 }
 
 export default function LoginModal() {
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [isLoggedin, setIsLoggedIn] = React.useState(false);
   const [name, setName] = React.useState("");
 
-
   const logout = (e) => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
-  }
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("email");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   getAuth().onAuthStateChanged(function (user) {
     setIsLoggedIn(user);
-    if (user !== null)
+    if (user !== null) {
       setName(user.displayName);
+      localStorage.setItem("email", user.email);
+    }
   });
 
   return (
     <Box>
       <Button onClick={handleOpen} variant="text" color="secondary">
-        <AccountCircleOutlinedIcon sx={{ color: 'white'}}/>
-    
+        <AccountCircleOutlinedIcon sx={{ color: "white" }} />
       </Button>
       <Modal
         open={open}
@@ -167,47 +169,60 @@ export default function LoginModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {isLoggedin ?
-
+        {isLoggedin ? (
           <Box sx={style.Login}>
-              <Typography id="modal-modal-title" variant="h6" component="h2" color = " white">
-                {
-                  name
-                }
+            <Typography
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+              color=" white"
+            >
+              {name}
             </Typography>
-            <Button variant="contained" color="error" onClick={logout} sx = {style.logoutButton}>
-              <Typography>
-                Sign Out
-              </Typography>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={logout}
+              sx={style.logoutButton}
+            >
+              <Typography>Sign Out</Typography>
             </Button>
           </Box>
-          :
-          
-
-        <Box sx={style.Login}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" sx = {style.modalTitle}>
-            Sign In
-          </Typography>
-          <Typography id="modal-modal-description" sx = {style.modalSubtitle}>
-            Sign in to review and rate students.
-          </Typography>
-          <Box>
-            <Button variant="contained"  sx = {style.loginButton} >
-             
-            <FacebookIcon /> 
-            </Button>
-            <Button variant="contained"  sx = {style.loginButton} onClick={() => LoginWithGoogle()}>
-            <TwitterIcon /> 
-            </Button>
-            <Button variant="contained" sx = {style.loginButton}  onClick = {() => LoginWithFacebook()} >
-            <GoogleIcon />
+        ) : (
+          <Box sx={style.Login}>
+            <Typography
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+              sx={style.modalTitle}
+            >
+              Sign In
+            </Typography>
+            <Typography id="modal-modal-description" sx={style.modalSubtitle}>
+              Sign in to review and rate students.
+            </Typography>
+            <Box>
+              <Button variant="contained" sx={style.loginButton}>
+                <TwitterIcon />
+              </Button>
+              <Button
+                variant="contained"
+                sx={style.loginButton}
+                onClick={() => LoginWithGoogle()}
+              >
+                <GoogleIcon />
+              </Button>
+              <Button
+                variant="contained"
+                sx={style.loginButton}
+                onClick={() => LoginWithFacebook()}
+              >
+                <FacebookIcon />
               </Button>
             </Box>
           </Box>
-        }
+        )}
       </Modal>
     </Box>
   );
-
-
 }

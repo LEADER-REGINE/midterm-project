@@ -6,25 +6,24 @@ import * as Mui from "@mui/material";
 import StudentProfile from "../components/StudentProfile";
 import { Helmet } from "react-helmet";
 import firebase from "../config/firebase";
-import { borderRadius } from "@mui/system";
+import CommentSection from "../components/CommentSection";
 import Rating from "@mui/material/Rating";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import RatingCom from "../components/Rating";
+import { getAuth } from "firebase/auth";
+
 const style = {
-    root: {
-        width: "100%",
-        background: "#131414",
-        alignItems : "center",
-    },
+  root: {
+    width: "100%",
+    background: "#131414",
+    alignItems: "center",
+  },
   header: {
     position: "absolute",
     width: "100%",
     height: "100%",
     background: "#131414",
   },
-
-  
-
   sortContainer: {
     marginTop: "57px",
     marginLeft: "900px",
@@ -83,21 +82,29 @@ const style = {
   emptyStars: {
     color: "#2C2F31",
 
-    fontSize:{
-    xs: "10px",
-    sm: "20px",
-    md: "30px",
+    fontSize: {
+      xs: "10px",
+      sm: "20px",
+      md: "30px",
     },
   },
 
-  bg:{
-      backgroundColor: "white",
+  bg: {
+    backgroundColor: "white",
 
   },
 };
 
 function StudentEvaluation() {
   const value = 3;
+  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const [name, setName] = useState("");
+
+  getAuth().onAuthStateChanged(function (user) {
+    setIsLoggedIn(user);
+    if (user !== null)
+      setName(user.displayName);
+  });
 
   const dispatch = useDispatch();
 
@@ -179,8 +186,9 @@ function StudentEvaluation() {
           </Mui.Paper>
         </Mui.Container>
         <Mui.Box color="background">
-                <RatingCom/>
-            </Mui.Box>
+          <RatingCom />
+        </Mui.Box>
+        <CommentSection />
       </Mui.Box>
     </Mui.Box>
   );

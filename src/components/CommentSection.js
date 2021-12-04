@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 
 import firebase from "../config/firebase";
-import { Container, Paper, Typography, Button } from '@mui/material';
+import { Container, Paper, Typography, Button, Avatar } from '@mui/material';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import CommentIcon from '@mui/icons-material/Comment';
 
@@ -33,6 +33,10 @@ export default function CommentSection() {
                     commentsList.list.map((commentsList) => {
                         return (
                             <Paper key={commentsList.id}>
+                                <Box>
+                                    <Avatar variant="square" src={commentsList.img} />
+
+                                </Box>
                                 <Typography>{commentsList.email}</Typography>
                                 <Typography>{commentsList.final_rating}</Typography>
                                 <Typography>{commentsList.review}</Typography>

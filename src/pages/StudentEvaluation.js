@@ -46,7 +46,6 @@ const style = {
       md: "324px",
     },
     backgroundColor: "#1E1F20",
-
   },
 
   avatarCont: {
@@ -147,7 +146,7 @@ function StudentEvaluation() {
       </Helmet>
       <Mui.Box >
         <Mui.Container >
-          <Mui.Paper elevation="5" sx={style.profileContainer}>
+          <Mui.Paper sx={style.profileContainer}>
             {studProfile &&
               studProfile.profile.map((studProfile) => {
                 return (
@@ -155,6 +154,7 @@ function StudentEvaluation() {
                     display="flex"
                     flexDirection="row"
                     sx={{ padding: 10 }}
+                    key={studProfile.id}
                   >
                     <Mui.Box>
                       <Mui.Avatar variant="square" sx={style.avatarCont}>
@@ -170,7 +170,7 @@ function StudentEvaluation() {
                       />
                       <Mui.Box display="flex" flexDirection="row">
                         <Mui.Typography>
-                          Overall Rating: {studProfile.ovrall_rating}.0
+                          Overall Rating: {studProfile.ovrall_rating}
                         </Mui.Typography>
                         <Mui.Typography>
                           Reviews: {studProfile.reviews}

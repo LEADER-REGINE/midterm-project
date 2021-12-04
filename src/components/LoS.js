@@ -61,7 +61,11 @@ const style = {
     border: "1px solid #303336",
     boxSizing: "border-box",
     borderRadius: "8px",
-    fontSize: "12px",
+    fontSize: {
+      xs : "8px",
+      sm : "10px",
+      md : "12px"
+    },
     color: "#D1D4C9",
   },
 
@@ -75,8 +79,8 @@ const style = {
     backgroundColor: "#1E1F20",
     height: "64px",
     width: {
-      xs: "300px",
-      sm: "550px",
+      xs: "380px",
+      sm: "600px",
       md: "800px",
       lg: "1025px",
     },
@@ -112,8 +116,8 @@ const style = {
     display: "flex",
     marginLeft: {
       xs: "180px",
-      sm: "350px",
-      md: "500px",
+      sm: "280px",
+      md: "413px",
       lg: "550px",
     },
     marginRight: "22.5px",
@@ -159,13 +163,17 @@ const style = {
     display: "flex",
     flexDirection: "row",
     marginLeft: {
-      xs: "200px",
-      sm: "100px",
-      md: "650px",
-      lg: "600px",
+      xs: "135px",
+      sm: "245px",
+      md: "380px",
+      lg: "480px",
     },
+    flexWrap : "wrap",
     margin: "20px 0",
     color: "#62666D",
+    justifyContent : "center",
+    alignItems : "center"
+    
   },
   studListContainer: {
     display: "flex",
@@ -173,8 +181,8 @@ const style = {
     flexDirection: "column",
   },
   stdLabel: {
-    paddingLeft: {
-      xs: "5px",
+    marginLeft: {
+      xs: "25px",
       sm: "80px",
       md: "100px",
       lg: "120px",
@@ -214,7 +222,12 @@ const style = {
       sm: "12px",
       md: "18px",
     },
-    marginLeft: "142px",
+    marginLeft: {
+      xs : "55px",
+      sm : "115px",
+      md : "132px",
+      lg : "152.5px"
+    },
   },
   studDetailsFontRating: {
     fontFamily: "Roboto",
@@ -225,7 +238,12 @@ const style = {
       sm: "12px",
       md: "18px",
     },
-    marginLeft: "142px",
+    marginLeft: {
+      xs : "30px",
+      sm : "48.5px",
+      md : "55px",
+      lg : "76px"
+    },
   },
   styledFont: {
     fontFamily: "Roboto",
@@ -236,6 +254,7 @@ const style = {
       sm: "12px",
       md: "14px",
     },
+    textAlign : "center"
   },
 };
 
@@ -280,7 +299,7 @@ export default function LoS() {
   }
 
   return (
-    <Mui.Box sx={style.header}>
+    <Mui.Box>
       <Mui.Box sx={style.sortContainer}>
         <Mui.Box component="label" sx={style.sort}>
           Sort By :
@@ -355,7 +374,7 @@ export default function LoS() {
                           sx={style.studImg}
                         />
                       </Mui.Box>
-                      <Mui.Box sx={style.studName}>
+                      <Mui.Box>
                         <Mui.Typography sx={style.studameFont}>
                           {studlist.fullname}
                         </Mui.Typography>
@@ -365,14 +384,10 @@ export default function LoS() {
                       <Mui.Typography sx={style.studDetailsFont}>
                         {studlist.course}
                       </Mui.Typography>
-                    </Mui.Box>
-                    <Mui.Box sx={style.studsubDetailsReview}>
-                        <Mui.Typography sx={style.studDetailsFontReview}>
+                      <Mui.Typography sx={style.studDetailsFontReview}>
                             {studlist.reviews}
                         </Mui.Typography>
-                    </Mui.Box>
-                    <Mui.Box sx={style.studsubDetailsRating}>
-                      <Mui.Typography sx={style.studDetailsFontRating}>
+                        <Mui.Typography sx={style.studDetailsFontRating}>
                         {studlist.ovrall_rating}
                       </Mui.Typography>
                     </Mui.Box>

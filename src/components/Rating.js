@@ -51,7 +51,7 @@ const style = {
   },
 //CONTROLLED
   filledStars: {
-    color: "#26CE8D",
+    color:"#26CE8D",
     fontSize: {
       xs: "10px",
       sm: "20px",
@@ -61,7 +61,6 @@ const style = {
 
   emptyStars: {
     color: "#2C2F31",
-
     fontSize: {
       xs: "10px",
       sm: "20px",
@@ -228,12 +227,64 @@ marginTop:{
         md: "120px",
 },
   },
-
+ 
 
 };
 
+
+
 export default function BasicRating() {
-  const [value, setValue] = React.useState(0);
+  
+  const [ratingVal, setRatingVal] = React.useState({ 
+    teamwork: "",
+  creativity: "",
+  adaptability: "",
+  leadership: "",
+  persuasion: "",
+});
+
+const onChange = e => {
+  e.persist();
+ 
+  const ratingValues = {
+    ...ratingVal,
+    [e.target.name]: e.target.value
+    
+  };
+  setRatingVal(ratingValues);
+ 
+  calculateAvgRating(ratingValues);
+
+
+  
+};
+
+const [total, setTotal] = React.useState(0);
+
+const calculateAvgRating = ratingValues => {
+  const {
+    teamwork,
+    creativity,
+    adaptability,
+    leadership,
+    persuasion,
+  } = ratingValues;
+  const newTotal =
+    Number(teamwork) +
+    Number(creativity) +
+    Number(adaptability) +
+    Number(leadership) +
+    Number(persuasion);
+
+  const finalAvg = newTotal / 5;
+  setTotal(finalAvg);
+};
+
+React.useEffect(() => {
+  console.log("test:" + total);
+}, [total]);
+
+  
 
   return (
     <Mui.Box sx={style.ratingContainer}>
@@ -243,8 +294,7 @@ export default function BasicRating() {
       <Rating
         icon={<StarRoundedIcon sx={style.rofilledStars} />}
         emptyIcon={<StarRoundedIcon sx={style.roemptyStars} />}
-        name="read-only"
-        value={value}
+        value={total}
         readOnly
       />
 
@@ -269,55 +319,41 @@ export default function BasicRating() {
 <Mui.Box sx={style.allign}>
      <Rating
      sx={style.stars}
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
+            name="teamwork"
+            onChange={onChange}
             icon={<StarRoundedIcon sx={style.filledStars} />}
             emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+
           />
 
           <Rating
           sx={style.stars}
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
+            name="creativity"
+            onChange={onChange}
             icon={<StarRoundedIcon sx={style.filledStars} />}
             emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
           />
           
           <Rating
           sx={style.stars}
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
+          name="adaptability"
+          onChange={onChange}
           icon={<StarRoundedIcon sx={style.filledStars} />}
           emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
         />
         
         <Rating
         sx={style.stars}
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
+            name="leadership"
+            onChange={onChange}
             icon={<StarRoundedIcon sx={style.filledStars} />}
             emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
           />
 
                 <Rating
                 sx={style.stars}
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
+            name="persuasion"
+            onChange={onChange}
             icon={<StarRoundedIcon sx={style.filledStars} />}
             emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
           />
@@ -330,7 +366,7 @@ export default function BasicRating() {
           rows={3}
           sx={style.commentBox}
         />
-         <Button sx={style.submitButton} variant="contained">Submit</Button>
+        <Button sx={style.submitButton} variant="contained" type="submit" className="submitButton" onClick={() => calculateAvgRating(ratingVal)}>Submit</Button>
         </Typography>
        
         </Mui.Box>

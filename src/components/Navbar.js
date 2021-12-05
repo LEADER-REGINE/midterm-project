@@ -149,6 +149,7 @@ export default function Navbar() {
               >
                 {links.map((link) => (
                   <NavLink
+                    key={link.name}
                     onClick={handleCloseNavMenu}
                     to={link.to}
                     style={{ textDecoration: "none" }}
@@ -185,6 +186,7 @@ export default function Navbar() {
             >
               {links.map((link) => (
                 <NavLink
+                  key={link.name}
                   style={(isActive) => ({
                     color: isActive ? "#26CE8D" : "#D1D4C9",
                     borderTop: isActive

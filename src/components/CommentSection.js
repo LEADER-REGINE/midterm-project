@@ -118,6 +118,10 @@ export default function CommentSection() {
                     commentsList.list.map((commentsList) => {
                         return (
                             <Paper key={commentsList.id}>
+                                <Box>
+                                    <Avatar variant="square" src={commentsList.img} />
+
+                                </Box>
                                 <Typography>{commentsList.email}</Typography>
                                 <Typography>{commentsList.final_rating}</Typography>
                                 <Typography>{commentsList.review}</Typography>

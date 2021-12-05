@@ -27,8 +27,16 @@ const style = {
   },
 
   profilePaper: {
-    width: "926px",
-    height: "324px",
+    width: {
+      sm : "700px",
+      md : "850px",
+      lg : "926px",
+    },
+    height: {
+      sm : "250px",
+      md : "310px",
+      lg : "324px"
+    },
     backgroundColor: "#1E1F20",
   },
 
@@ -38,25 +46,44 @@ const style = {
   },
 
   Rating : {
-    marginLeft : "125.3px",
+    marginLeft : {
+      sm : "105px",
+      md : "125.3px"
+    },
     marginTop : "10px"
   },
 
   avatarCont: {
-    width: "100.34px",
-    height: "100.34px",
+    width: {
+      sm : "50.34px",
+      md : "100.34px",
+      lg : "100.34px"
+    },
+    height: {
+      sm : "50.34px",
+      md : "100.34px",
+      lg : "100.34px"
+    },
     border: "2px solid #FFFFFF",
     borderRadius: "10px",
     marginTop: {
-      lg: "48.67px",
+      sm : "80px",
+      md : "70px",
+      lg: "80.67px",
     },
-    marginLeft: "149.17px",
+    marginLeft: {
+      sm :"130.17px",
+      md :"149.17px",
+    },
   },
 
   RatingPaper : {
     display : "flex",
     flexDirection : "row",
-    marginLeft : "110px",
+    marginLeft : {
+      sm : "80px",
+      md : "110px"
+    },
     color : "white",
     marginTop : "-5px"
   },
@@ -103,8 +130,15 @@ const style = {
 
   details : {
     display : "flex",
-    marginLeft : "392px",
-    marginTop : "-180px",
+    marginLeft : {
+      sm : "290px",
+      md : "392px"
+    },
+    marginTop : {
+      sm : "-155px",
+      md : "-190px",
+      lg : "-190px"
+    },
     
 
   },
@@ -113,7 +147,10 @@ const style = {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "normal",
-    fontSize: "24px",
+    fontSize: {
+      sm : "18px",
+      md : "24px"
+    },
     lineHeight: "24px",
     alignItems: "center",
     textAlign: "center",
@@ -121,16 +158,24 @@ const style = {
   },
 
   studSubdetails : {
-    marginTop : "32px",
+    marginTop : "12px",
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: "12px",
     lineHeight: "24px",
     alignItems: "center",
-    textAlign : "center",
+    marginLeft : {
+      sm : "290px",
+      md : "392px"
+    },
     color : "white"
   },
+  subdetails : {
+    display : "flex",
+    justifyContent : "center",
+    flexDirection : "column"
+  }
 };
 
 function StudentEvaluation() {
@@ -226,7 +271,12 @@ function StudentEvaluation() {
                       <Mui.Typography sx = {style.studName}>{studProfile.fullname}</Mui.Typography>
                     </Mui.Box>
                     <Mui.Box sx = {style.subdetails}>
-                      <Mui.Typography sx = {style.studSubdetails}>{studProfile.fullname}</Mui.Typography>
+                      <Mui.Typography sx = {style.studSubdetails}>Gender :</Mui.Typography>
+                      <Mui.Typography sx = {style.studSubdetails}>Birthday :</Mui.Typography>
+                      <Mui.Typography sx = {style.studSubdetails}>Address :</Mui.Typography>
+                      <Mui.Typography sx = {style.studSubdetails}>Nickname :</Mui.Typography>
+                      <Mui.Typography sx = {style.studSubdetails}>Skills/Language :</Mui.Typography>
+                      
                     </Mui.Box>
                     </Mui.Box>
                   

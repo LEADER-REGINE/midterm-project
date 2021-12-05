@@ -48,45 +48,75 @@ const style = {
 
   Rating: {
     marginLeft: {
-      sm: "105px",
+      
       md: "125.3px"
     },
-    marginTop: "10px"
+    margin:{
+      xs:"auto"
+    },
+    marginTop: "10px",
+    marginTop: {
+      xs: "10px"
+    },
+    marginBottom: {
+      xs: "10px"
+    }
+
   },
 
   avatarCont: {
     height: {
-      xs: "1.75rem",
-      sm: "2rem",
-      md: "5.25rem",
+      xs: "6.146rem",
+      sm: "6.271rem",
+      md: "6.271rem",
     },
     width: {
-      xs: "4.5rem",
-      sm: "4.75rem",
-      md: "5.188rem",
+      xs: "6.146rem",
+      sm: "6.271rem",
+      md: "6.271rem",
     },
+
     border: "2px solid #FFFFFF",
     borderRadius: "10px",
+    
     marginTop: {
-      sm: "80px",
+      xs: "10px",
       md: "70px",
       lg: "80.67px",
     },
-    marginLeft: {
-      sm: "130.17px",
-      md: "149.17px",
+
+    marginLeft:{
+      md: "149.17px"
     },
+    margin: {
+      xs: "auto",
+      
+    },
+
+    
+
+    
+    
   },
 
   RatingPaper: {
     display: "flex",
     flexDirection: "row",
     marginLeft: {
-      sm: "80px",
+      
       md: "110px"
     },
     color: "white",
-    marginTop: "-5px"
+    marginTop: "-5px",
+
+    margin:{
+      xs:"auto"
+    },
+
+    marginBottom:{
+      xs:"10px"
+    }
+
   },
 
   numberFont: {
@@ -236,7 +266,9 @@ function StudentEvaluation() {
             {studProfile &&
               studProfile.profile.map((studProfile) => {
                 return (
-                  <Mui.Box key={studProfile.id}>
+                  <Mui.Box key={studProfile.id} 
+                      sx={{margin:"40px"}}
+                  >
 
                     <Mui.Box sx={style.innerContainer}>
                       <Mui.Box

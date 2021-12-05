@@ -28,85 +28,85 @@ const style = {
 
   profilePaper: {
     width: {
-      sm : "700px",
-      md : "850px",
-      lg : "926px",
+      sm: "700px",
+      md: "850px",
+      lg: "926px",
     },
     height: {
-      sm : "250px",
-      md : "310px",
-      lg : "324px"
+      sm: "250px",
+      md: "310px",
+      lg: "324px"
     },
     backgroundColor: "#1E1F20",
   },
 
-  innerContainer : {
-      display : "flex",
-      flexDirection : "column"
+  innerContainer: {
+    display: "flex",
+    flexDirection: "column"
   },
 
-  Rating : {
-    marginLeft : {
-      sm : "105px",
-      md : "125.3px"
+  Rating: {
+    marginLeft: {
+      sm: "105px",
+      md: "125.3px"
     },
-    marginTop : "10px"
+    marginTop: "10px"
   },
 
   avatarCont: {
     width: {
-      sm : "50.34px",
-      md : "100.34px",
-      lg : "100.34px"
+      sm: "50.34px",
+      md: "100.34px",
+      lg: "100.34px"
     },
     height: {
-      sm : "50.34px",
-      md : "100.34px",
-      lg : "100.34px"
+      sm: "50.34px",
+      md: "100.34px",
+      lg: "100.34px"
     },
     border: "2px solid #FFFFFF",
     borderRadius: "10px",
     marginTop: {
-      sm : "80px",
-      md : "70px",
+      sm: "80px",
+      md: "70px",
       lg: "80.67px",
     },
     marginLeft: {
-      sm :"130.17px",
-      md :"149.17px",
+      sm: "130.17px",
+      md: "149.17px",
     },
   },
 
-  RatingPaper : {
-    display : "flex",
-    flexDirection : "row",
-    marginLeft : {
-      sm : "80px",
-      md : "110px"
+  RatingPaper: {
+    display: "flex",
+    flexDirection: "row",
+    marginLeft: {
+      sm: "80px",
+      md: "110px"
     },
-    color : "white",
-    marginTop : "-5px"
+    color: "white",
+    marginTop: "-5px"
   },
 
-  numberFont : {
-    fontFamily : "Roboto",
-    fontWeight : "400",
-    fontStyle : "normal",
-    fontSize : "18px",
-    LineHeight : "20px",
-    textAlign : "center",
-    marginLeft : "10px"
+  numberFont: {
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    fontStyle: "normal",
+    fontSize: "18px",
+    LineHeight: "20px",
+    textAlign: "center",
+    marginLeft: "10px"
   },
 
-  subFont : {
-    fontFamily : "Roboto",
-    fontWeight : "400",
-    fontStyle : "normal",
-    fontSize : "12px",
-    LineHeight : "16px",
-    marginTop : "7px",
-    marginLeft : "6px"
-   
+  subFont: {
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    fontStyle: "normal",
+    fontSize: "12px",
+    LineHeight: "16px",
+    marginTop: "7px",
+    marginLeft: "6px"
+
   },
 
   filledStars: {
@@ -128,53 +128,53 @@ const style = {
     },
   },
 
-  details : {
-    display : "flex",
-    marginLeft : {
-      sm : "290px",
-      md : "392px"
+  details: {
+    display: "flex",
+    marginLeft: {
+      sm: "290px",
+      md: "392px"
     },
-    marginTop : {
-      sm : "-155px",
-      md : "-190px",
-      lg : "-190px"
+    marginTop: {
+      sm: "-155px",
+      md: "-190px",
+      lg: "-190px"
     },
-    
+
 
   },
 
-  studName : {
+  studName: {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: {
-      sm : "18px",
-      md : "24px"
+      sm: "18px",
+      md: "24px"
     },
     lineHeight: "24px",
     alignItems: "center",
     textAlign: "center",
-    color : "white"
+    color: "white"
   },
 
-  studSubdetails : {
-    marginTop : "12px",
+  studSubdetails: {
+    marginTop: "12px",
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: "12px",
     lineHeight: "24px",
     alignItems: "center",
-    marginLeft : {
-      sm : "290px",
-      md : "392px"
+    marginRight: {
+      sm: "290px",
+      md: "40px"
     },
-    color : "white"
+    color: "white"
   },
-  subdetails : {
-    display : "flex",
-    justifyContent : "center",
-    flexDirection : "column"
+  subdetails: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column"
   }
 };
 
@@ -235,51 +235,80 @@ function StudentEvaluation() {
               studProfile.profile.map((studProfile) => {
                 return (
                   <Mui.Box key={studProfile.id}>
-                    
-                      <Mui.Box sx = {style.innerContainer}>
-                        <Mui.Box
-                          component="img"
-                          sx={style.avatarCont}
-                          src={studProfile.profileImg}
-                        />
-                        <Rating
-                          name="text-feedback"
-                          value={studProfile.ovrall_rating}
-                          readOnly
-                          precision={0.5}
-                          icon={<StarRoundedIcon sx={style.filledStars} />}
-                          emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
-                          sx = {style.Rating}
-                        />
-                      
-                      <Mui.Box sx = {style.RatingPaper}>
-                        <Mui.Typography sx = {style.numberFont}>
-                        {studProfile.ovrall_rating}
+
+                    <Mui.Box sx={style.innerContainer}>
+                      <Mui.Box
+                        component="img"
+                        sx={style.avatarCont}
+                        src={studProfile.profileImg}
+                      />
+                      <Rating
+                        name="text-feedback"
+                        value={studProfile.ovrall_rating}
+                        readOnly
+                        precision={0.5}
+                        icon={<StarRoundedIcon sx={style.filledStars} />}
+                        emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+                        sx={style.Rating}
+                      />
+
+                      <Mui.Box sx={style.RatingPaper}>
+                        <Mui.Typography sx={style.numberFont}>
+                          {studProfile.ovrall_rating}
                         </Mui.Typography>
-                        <Mui.Typography sx = {style.subFont}>
-                         Overall Rating
+                        <Mui.Typography sx={style.subFont}>
+                          Overall Rating
                         </Mui.Typography>
-                        <Mui.Typography sx = {style.numberFont}>
-                        {studProfile.reviews}
+                        <Mui.Typography sx={style.numberFont}>
+                          {studProfile.reviews}
                         </Mui.Typography>
-                        <Mui.Typography sx = {style.subFont}>
-                         Reviews
+                        <Mui.Typography sx={style.subFont}>
+                          Reviews
                         </Mui.Typography>
                       </Mui.Box>
                     </Mui.Box>
-                    <Mui.Box sx = {style.details}>
-                      <Mui.Typography sx = {style.studName}>{studProfile.fullname}</Mui.Typography>
+
+                    <Mui.Box >
+                      <Mui.Box sx={style.details}>
+                        <Mui.Typography sx={style.studName}>{studProfile.fullname}</Mui.Typography>
+                      </Mui.Box>
+                      <Mui.Box sx={{ display: "flex", marginLeft: {sm:"0px", md:"392px"} }}>
+                        <Mui.Box sx={style.subdetails}>
+                          <Mui.Typography sx={style.studSubdetails}>Gender :</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Birthday :</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Address :</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Nickname :</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Skills/Language :</Mui.Typography>
+
+                        </Mui.Box>
+                        <Mui.Box sx={style.subdetails}>
+                          <Mui.Typography sx={style.studSubdetails}>Male</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>01-01-19991</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Bustos, Bulacan</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Bartz</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>ReactJS</Mui.Typography>
+
+                        </Mui.Box>
+                        <Mui.Box sx={style.subdetails}>
+                          <Mui.Typography sx={style.studSubdetails}>Teamwork:</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Creativity:</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Adaptability:</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Leadership:</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Persuation:</Mui.Typography>
+
+                        </Mui.Box>
+                        <Mui.Box sx={style.subdetails}>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating} </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
+
+                        </Mui.Box>
+                      </Mui.Box>
                     </Mui.Box>
-                    <Mui.Box sx = {style.subdetails}>
-                      <Mui.Typography sx = {style.studSubdetails}>Gender :</Mui.Typography>
-                      <Mui.Typography sx = {style.studSubdetails}>Birthday :</Mui.Typography>
-                      <Mui.Typography sx = {style.studSubdetails}>Address :</Mui.Typography>
-                      <Mui.Typography sx = {style.studSubdetails}>Nickname :</Mui.Typography>
-                      <Mui.Typography sx = {style.studSubdetails}>Skills/Language :</Mui.Typography>
-                      
-                    </Mui.Box>
-                    </Mui.Box>
-                  
+                  </Mui.Box>
+
                 );
               })}
           </Mui.Paper>

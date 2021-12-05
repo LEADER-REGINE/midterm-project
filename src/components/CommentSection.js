@@ -83,12 +83,13 @@ export default function CommentSection() {
 
     const fetchComments = async () => {
         const commentsRef = db.collection('students').doc(uid).collection("comments");
-        const data = await commentsRef.get();
+        const data = await commentsRef.orderBy("timestamp", "desc").get();
         let commentsData = [];
-        data.docs.forEach(onSnapshot => {
+        data.docs.forEach((onSnapshot) => {
             commentsData.push(onSnapshot.data())
             setcommentsList({ list: commentsData });
         })
+
     }
     React.useEffect(() => {
         fetchComments();

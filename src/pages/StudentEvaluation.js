@@ -125,7 +125,9 @@ function StudentEvaluation() {
       studentProfile.push(doc.data());
       setstudProfile({ profile: studentProfile });
     });
+
   };
+
   useEffect(() => {
     fetchList();
   }, []);
@@ -157,12 +159,10 @@ function StudentEvaluation() {
                     key={studProfile.id}
                   >
                     <Mui.Box>
-                      <Mui.Avatar variant="square" sx={style.avatarCont}>
-                        {studProfile.profileImg}
-                      </Mui.Avatar>
+                      <Mui.Avatar variant="square" sx={style.avatarCont} src={studProfile.profileImg} />
                       <Rating
                         name="text-feedback"
-                        value={value}
+                        value={studProfile.ovrall_rating}
                         readOnly
                         precision={0.5}
                         icon={<StarRoundedIcon sx={style.filledStars} />}

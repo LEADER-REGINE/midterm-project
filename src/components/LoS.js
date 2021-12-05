@@ -62,9 +62,9 @@ const style = {
     boxSizing: "border-box",
     borderRadius: "8px",
     fontSize: {
-      xs : "8px",
-      sm : "10px",
-      md : "12px"
+      xs: "8px",
+      sm: "10px",
+      md: "12px",
     },
     color: "#D1D4C9",
   },
@@ -168,12 +168,11 @@ const style = {
       md: "380px",
       lg: "480px",
     },
-    flexWrap : "wrap",
+    flexWrap: "wrap",
     margin: "20px 0",
     color: "#62666D",
-    justifyContent : "center",
-    alignItems : "center"
-    
+    justifyContent: "center",
+    alignItems: "center",
   },
   studListContainer: {
     display: "flex",
@@ -223,10 +222,10 @@ const style = {
       md: "18px",
     },
     marginLeft: {
-      xs : "55px",
-      sm : "115px",
-      md : "132px",
-      lg : "152.5px"
+      xs: "55px",
+      sm: "115px",
+      md: "132px",
+      lg: "152.5px",
     },
   },
   studDetailsFontRating: {
@@ -239,10 +238,10 @@ const style = {
       md: "18px",
     },
     marginLeft: {
-      xs : "30px",
-      sm : "48.5px",
-      md : "55px",
-      lg : "76px"
+      xs: "30px",
+      sm: "48.5px",
+      md: "55px",
+      lg: "76px",
     },
   },
   styledFont: {
@@ -254,7 +253,7 @@ const style = {
       sm: "12px",
       md: "14px",
     },
-    textAlign : "center"
+    textAlign: "center",
   },
 };
 
@@ -385,9 +384,9 @@ export default function LoS() {
                         {studlist.course}
                       </Mui.Typography>
                       <Mui.Typography sx={style.studDetailsFontReview}>
-                            {studlist.reviews}
-                        </Mui.Typography>
-                        <Mui.Typography sx={style.studDetailsFontRating}>
+                        {studlist.reviews}
+                      </Mui.Typography>
+                      <Mui.Typography sx={style.studDetailsFontRating}>
                         {studlist.ovrall_rating}
                       </Mui.Typography>
                     </Mui.Box>

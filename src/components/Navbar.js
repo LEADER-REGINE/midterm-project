@@ -65,7 +65,6 @@ const style = {
     // height: "76px",
     // padding: "20px 32px 20px 42px",
   },
-
 };
 
 const links = [
@@ -102,7 +101,7 @@ export default function Navbar() {
     setAnchorElUser(null);
   };
   return (
-    <Box sx={{ flexGrow: 1 }} >
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={style.appBar}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -110,10 +109,9 @@ export default function Navbar() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 2, display: { xs: "none", md: "flex" }}}
+              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             >
               Student Review
-              
             </Typography>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <MdOutlineGridView size="20px" />

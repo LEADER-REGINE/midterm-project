@@ -344,8 +344,8 @@ export default function BasicRating() {
 
   function setRating(e) {
 
-    e.preventDefault();
 
+    e.preventDefault();
     let userRef = db.collection("students").doc(localStorage.getItem("userID"));
 
     userRef.get().then((doc) => {
@@ -362,6 +362,7 @@ export default function BasicRating() {
         final_rating: total,
         email: user.email,
         img: user.photoURL,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       }).then((docRef) => {
         userRef.collection("comments").doc(docRef.id).update({
           id: docRef.id,
@@ -370,7 +371,12 @@ export default function BasicRating() {
             reviews: newrev,
             ovrall_rating: newrate,
             ratingNum: newnum,
-          }).then();
+          }).then(function () {
+            setPayload({
+              postBody: '',
+            });
+            window.location.reload(false);
+          });
         })
       }).catch((error) => {
         console.error("Error writing document: ", error);

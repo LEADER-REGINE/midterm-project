@@ -63,7 +63,7 @@ const style = {
             md: "30px",
         },
     },
-    
+
 }
 
 
@@ -82,12 +82,13 @@ export default function CommentSection() {
 
     const fetchComments = async () => {
         const commentsRef = db.collection('students').doc(uid).collection("comments");
-        const data = await commentsRef.get();
+        const data = await commentsRef.orderBy("timestamp", "desc").get();
         let commentsData = [];
-        data.docs.forEach(onSnapshot => {
+        data.docs.forEach((onSnapshot) => {
             commentsData.push(onSnapshot.data())
             setcommentsList({ list: commentsData });
         })
+
     }
     React.useEffect(() => {
         fetchComments();
@@ -144,24 +145,26 @@ export default function CommentSection() {
             {commentsList &&
                 commentsList.list.map((commentsList) => {
                     return (
-                        <Card sx={{ 
-                            width: "926px", 
-                            marginBottom: "24px", 
-                            bgcolor: "#1E1F20", 
-                            border: "1px solid #303336",
-                            boxShadow: 4,
+                        <Card
+                            key={commentsList.id}
+                            sx={{
+                                width: "926px",
+                                marginBottom: "24px",
+                                bgcolor: "#1E1F20",
+                                border: "1px solid #303336",
+                                boxShadow: 4,
                             }}>
 
                             <CardHeader
                                 avatar={
-                                    <Avatar sx={{  }} aria-label="recipe">
-                                        
+                                    <Avatar sx={{}} aria-label="recipe">
+
                                     </Avatar>
                                 }
-                                
-                                
+
+
                                 title={commentsList.email}
-                                
+
                                 subheader="Time Posted"
                             />
 
@@ -172,25 +175,25 @@ export default function CommentSection() {
                                 icon={<StarRoundedIcon sx={style.rofilledStars} />}
                                 emptyIcon={<StarRoundedIcon sx={style.roemptyStars} />}
                                 value={commentsList.final_rating}
-                                sx={{marginLeft:"60px"}}
+                                sx={{ marginLeft: "60px" }}
                                 readOnly
                             />
 
                             <CardContent
-                            sx={{marginLeft:"52px"}}>
+                                sx={{ marginLeft: "52px" }}>
                                 <Typography variant="body2" color="#D1D4C9">
                                     {commentsList.review}
                                 </Typography>
                             </CardContent>
                             <CardActions >
-                                
+
                                 <ExpandMore
                                     expand={expanded}
                                     onClick={handleExpandClick}
                                     aria-expanded={expanded}
                                     aria-label="show more"
                                 >
-                                    <ChatBubbleOutlineIcon sx={{color:"#62666D", marginRight:"12px"}} />
+                                    <ChatBubbleOutlineIcon sx={{ color: "#62666D", marginRight: "12px" }} />
                                     <Typography variant="body2" color="#62666D">
                                         Comment
                                     </Typography>
@@ -202,16 +205,16 @@ export default function CommentSection() {
                                     aria-expanded={expanded}
                                     aria-label="show more"
                                 >
-                                    <ReportGmailerrorredOutlinedIcon sx={{color:"#62666D", marginRight:"12px"}} />
+                                    <ReportGmailerrorredOutlinedIcon sx={{ color: "#62666D", marginRight: "12px" }} />
                                     <Typography variant="body2" color="#62666D">
                                         Report
                                     </Typography>
                                 </ExpandMore>
-                                
+
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    
+
                                 </CardContent>
                             </Collapse>
 

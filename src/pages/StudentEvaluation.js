@@ -166,7 +166,7 @@ const style = {
     lineHeight: "24px",
     alignItems: "center",
     marginRight: {
-      sm: "290px",
+      sm: "40px",
       md: "40px"
     },
     color: "white"
@@ -240,6 +240,9 @@ function StudentEvaluation() {
                       <Mui.Box
                         component="img"
                         sx={style.avatarCont}
+                        
+
+
                         src={studProfile.profileImg}
                       />
                       <Rating
@@ -272,7 +275,7 @@ function StudentEvaluation() {
                       <Mui.Box sx={style.details}>
                         <Mui.Typography sx={style.studName}>{studProfile.fullname}</Mui.Typography>
                       </Mui.Box>
-                      <Mui.Box sx={{ display: "flex", marginLeft: {sm:"0px", md:"392px"} }}>
+                      <Mui.Box sx={{ display: "flex", marginLeft: {sm:"290px", md:"392px"} }}>
                         <Mui.Box sx={style.subdetails}>
                           <Mui.Typography sx={style.studSubdetails}>Gender :</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>Birthday :</Mui.Typography>

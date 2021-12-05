@@ -107,7 +107,7 @@ export default function CommentSection() {
         <Box sx={{
             flexGrow: 5,
             display: {
-                xs: "none", md: "flex",
+                xs: "flex", md: "flex",
 
                 flexDirection: "column",
                 alignContent: "center",

@@ -14,6 +14,7 @@ import LoginModal from "./LoginModal";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Link, NavLink } from "react-router-dom";
+import { MdOutlineGridView } from "react-icons/md";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,7 +61,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const style = {
   appBar: {
     backgroundColor: "#1E1F20",
+    boxShadow: "4px 4px 20px rgba(0, 0, 0, 0.4)",
+    // height: "76px",
+    // padding: "20px 32px 20px 42px",
   },
+
 };
 
 const links = [
@@ -97,7 +102,7 @@ export default function Navbar() {
     setAnchorElUser(null);
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} >
       <AppBar position="static" sx={style.appBar}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -105,11 +110,14 @@ export default function Navbar() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+              sx={{ mr: 2, display: { xs: "none", md: "flex" }}}
             >
               Student Review
+              
             </Typography>
-
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <MdOutlineGridView size="20px" />
+            </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"

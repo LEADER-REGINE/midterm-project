@@ -207,6 +207,13 @@ const style = {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column"
+  },
+
+  container:{
+    margin: {
+      xs: "40px",
+      md: "0px"
+    },
   }
 };
 
@@ -267,7 +274,7 @@ function StudentEvaluation() {
               studProfile.profile.map((studProfile) => {
                 return (
                   <Mui.Box key={studProfile.id} 
-                      sx={{margin:"40px"}}
+                    sx={style.container}
                   >
 
                     <Mui.Box sx={style.innerContainer}>

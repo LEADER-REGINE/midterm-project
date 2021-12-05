@@ -42,7 +42,8 @@ const style = {
 
   innerContainer: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+   
   },
 
   Rating: {
@@ -54,15 +55,15 @@ const style = {
   },
 
   avatarCont: {
-    width: {
-      sm: "50.34px",
-      md: "100.34px",
-      lg: "100.34px"
-    },
     height: {
-      sm: "50.34px",
-      md: "100.34px",
-      lg: "100.34px"
+      xs: "1.75rem",
+      sm: "2rem",
+      md: "5.25rem",
+    },
+    width: {
+      xs: "4.5rem",
+      sm: "4.75rem",
+      md: "5.188rem",
     },
     border: "2px solid #FFFFFF",
     borderRadius: "10px",
@@ -170,6 +171,7 @@ const style = {
       md: "40px"
     },
     color: "white"
+    
   },
   subdetails: {
     display: "flex",
@@ -241,6 +243,7 @@ function StudentEvaluation() {
                         component="img"
                         sx={style.avatarCont}
                         src={studProfile.profileImg}
+
                       />
                       <Rating
                         name="text-feedback"
@@ -294,7 +297,7 @@ function StudentEvaluation() {
                           <Mui.Typography sx={style.studSubdetails}>Creativity:</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>Adaptability:</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>Leadership:</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>Persuation:</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Persuasion:</Mui.Typography>
 
                         </Mui.Box>
                         <Mui.Box sx={style.subdetails}>

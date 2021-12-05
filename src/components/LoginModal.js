@@ -25,15 +25,27 @@ const style = {
   Login: {
     position: "absolute",
     top: "22%",
-    left: "80%",
+    left: {
+      xs: "208px",
+      lg: "1280px",
+    },
     transform: "translate(-50%, -50%)",
-    width: 350,
+    width: {
+      xs: "230px",
+      lg: "350px",
+    },
+    height: {
+      xs: "150px",
+      lg: "180px",
+    },
     backgroundColor: "rgba(19, 20, 20 )",
     border: "2px solid #000",
     boxShadow: 24,
     borderRadius: "8px",
     p: 4,
     textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   loginButton: {
@@ -41,22 +53,33 @@ const style = {
     backgroundColor: (theme) => theme.palette.secondary.main,
   },
   modalTitle: {
-    padding: "5px 10px",
-    color: (theme) => theme.palette.common.white,
+    marginTop: {
+      xs: "-25px",
+      lg: "-5px",
+    },
+    fontFamily: "Roboto",
     letterSpacing: "0.0625rem",
-    fontWeight: "light",
-    size: "1.125rem",
+    fontWeight: "normal",
+    fontSize: "18px",
+    fontStyle: "normal",
+    color: "#D1D4C9",
   },
   modalSubtitle: {
     padding: "5px 10px",
-    color: (theme) => theme.palette.common.white,
     letterSpacing: "0.0625rem",
     fontWeight: "light",
     fontSize: ".75rem",
+    color: "#D1D4C9",
   },
 
   logoutButton: {
     marginTop: "10px",
+  },
+  icons: {
+    height: {
+      xs: "10px",
+      lg: "24px",
+    },
   },
 };
 const auth = getAuth();
@@ -203,21 +226,21 @@ export default function LoginModal() {
             </Typography>
             <Box>
               <Button variant="contained" sx={style.loginButton}>
-                <TwitterIcon />
+                <TwitterIcon sx={style.icons} />
               </Button>
               <Button
                 variant="contained"
                 sx={style.loginButton}
                 onClick={() => LoginWithGoogle()}
               >
-                <GoogleIcon />
+                <GoogleIcon sx={style.icons} />
               </Button>
               <Button
                 variant="contained"
                 sx={style.loginButton}
                 onClick={() => LoginWithFacebook()}
               >
-                <FacebookIcon />
+                <FacebookIcon sx={style.icons} />
               </Button>
             </Box>
           </Box>

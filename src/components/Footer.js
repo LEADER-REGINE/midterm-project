@@ -1,9 +1,12 @@
 import React from "react";
-import { Box, Grid, Typography, Divider, SvgIcon } from "@mui/material";
+import { Box, Grid, Typography, Divider, Button, Stack } from "@mui/material";
 
 import { ReactComponent as Vector1 } from "../assets/svg/vector1.svg";
 import { ReactComponent as Vector2 } from "../assets/svg/vector2.svg";
 import { ReactComponent as Vector3 } from "../assets/svg/vector3.svg";
+
+
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 const style = {
   root: {
@@ -13,6 +16,7 @@ const style = {
   colContainer: {
     display: "flex",
     justifyContent: "center",
+    // alignItems:"center"
   },
 
   info: {
@@ -49,6 +53,55 @@ const style = {
 
     display: "flex",
   },
+  helpButton: {
+
+
+    height: {
+      xs: "1.75rem",
+      sm: "2rem",
+      md: "2.25rem",
+    },
+    width: {
+      xs: "4.5rem",
+      sm: "4.75rem",
+      md: "5.188rem",
+    },
+    fontSize: {
+      xs: "10px",
+      sm: "12px",
+      md: "14px",
+    },
+
+    display: "flex",
+    // flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "8px 14px",
+    position: "relative",
+    borderRadius: "3.125rem",
+    backgroundColor: "#26CE8D",
+    color: "white",
+    textTransform: "none",
+
+// left: "20rem",
+    // top: {
+    //   xs: "69rem",
+    //   sm: "75rem",
+    //   md: "7rem",
+    // },
+    left: {
+      xs: "3rem",
+      sm: "4rem",
+      md: "18rem",
+    },
+
+// margin:"auto"
+
+
+  },
+  topMargin: {
+    marginTop: "25rem"
+  }
 };
 
 export default function Footer() {
@@ -56,9 +109,16 @@ export default function Footer() {
     <Box sx={style.root}>
       <Box sx={style.footerStyle}>
         <Grid container>
+
           <Grid item xs={12}>
+            <Box sx={style.topMargin}>
+            </Box>
+
             <Box sx={style.info}>
+
+
               <Box sm item sx={style.colContainer}>
+               
                 <a href="https://www.twitter.com">
                   {" "}
                   <Typography sx={style.vectorStyle}>
@@ -94,7 +154,11 @@ export default function Footer() {
                 <Typography sx={style.info} color="textPrimary">
                   © 2021 Student Review. All Rights Reserved.
                 </Typography>
+                <Button sx={style.helpButton} variant="outlined" startIcon={<HelpOutlineIcon />}>
+                  Help
+                </Button>
               </Box>
+
               <Box sx={style.colContainer}>
                 <Typography sx={style.infoColor} color="textPrimary">
                   Terms of Service

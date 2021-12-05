@@ -150,7 +150,7 @@ export default function CommentSection() {
                 commentsList.list.map((commentsList) => {
                     return (
                         <Card sx={{
-                            width: {xs:"100%", md: "926px"},
+                            width: {xs:"90%", md: "926px"},
                             margin: {xs:"20px 0px"},
                             
                             marginBottom: "24px",

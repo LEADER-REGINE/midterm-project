@@ -116,7 +116,7 @@ export default function TopStudents() {
   }, []);
 
   return (
-    <Mui.Container sx={style.container}>
+    <Mui.Container>
       <Mui.Box sx={style.studentContainer}>
         {studlist &&
           studlist.list.map((studlist) => {

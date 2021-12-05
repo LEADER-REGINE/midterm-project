@@ -13,60 +13,73 @@ import RatingCom from "../components/Rating";
 import { getAuth } from "firebase/auth";
 
 const style = {
-  root: {
-    width: "100%",
-    background: "#131414",
-    alignItems: "center",
-  },
-  header: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    background: "#131414",
-  },
-  sortContainer: {
-    marginTop: "57px",
-    marginLeft: "900px",
-    display: "flex",
-    justifyContent: "row",
-  },
-
   profileContainer: {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    width: {
-      xs: "500px",
-      sm: "700px",
-      md: "926px",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    flexWrap: "wrap",
+    background: "#131414",
+    paddingTop: "140px",
+    "@media only screen and (max-width : 720px)": {
+      justifyContent: "center",
+      alignItems: "center",
     },
-    height: {
-      xs: "120px",
-      sm: "210px",
-      md: "324px",
-    },
+  },
+
+  profilePaper: {
+    width: "926px",
+    height: "324px",
     backgroundColor: "#1E1F20",
   },
 
-  avatarCont: {
-    width: {
-      xs: "50px",
-      sm: "70px",
-      md: "110px",
-    },
+  innerContainer : {
+      display : "flex",
+      flexDirection : "column"
+  },
 
-    height: {
-      xs: "50px",
-      sm: "70px",
-      md: "110px",
-    },
+  Rating : {
+    marginLeft : "125.3px",
+    marginTop : "10px"
+  },
+
+  avatarCont: {
+    width: "100.34px",
+    height: "100.34px",
     border: "2px solid #FFFFFF",
     borderRadius: "10px",
-    margin: {
-      xs: "5px 0px",
-      sm: "15px 0px",
-      md: "20px 0px",
+    marginTop: {
+      lg: "48.67px",
     },
+    marginLeft: "149.17px",
+  },
+
+  RatingPaper : {
+    display : "flex",
+    flexDirection : "row",
+    marginLeft : "110px",
+    color : "white",
+    marginTop : "-5px"
+  },
+
+  numberFont : {
+    fontFamily : "Roboto",
+    fontWeight : "400",
+    fontStyle : "normal",
+    fontSize : "18px",
+    LineHeight : "20px",
+    textAlign : "center",
+    marginLeft : "10px"
+  },
+
+  subFont : {
+    fontFamily : "Roboto",
+    fontWeight : "400",
+    fontStyle : "normal",
+    fontSize : "12px",
+    LineHeight : "16px",
+    marginTop : "7px",
+    marginLeft : "6px"
+   
   },
 
   filledStars: {
@@ -88,9 +101,35 @@ const style = {
     },
   },
 
-  bg: {
-    backgroundColor: "white",
+  details : {
+    display : "flex",
+    marginLeft : "392px",
+    marginTop : "-180px",
+    
 
+  },
+
+  studName : {
+    fontFamily: "Roboto",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "24px",
+    lineHeight: "24px",
+    alignItems: "center",
+    textAlign: "center",
+    color : "white"
+  },
+
+  studSubdetails : {
+    marginTop : "32px",
+    fontFamily: "Roboto",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "12px",
+    lineHeight: "24px",
+    alignItems: "center",
+    textAlign : "center",
+    color : "white"
   },
 };
 
@@ -101,8 +140,7 @@ function StudentEvaluation() {
 
   getAuth().onAuthStateChanged(function (user) {
     setIsLoggedIn(user);
-    if (user !== null)
-      setName(user.displayName);
+    if (user !== null) setName(user.displayName);
   });
 
   const dispatch = useDispatch();
@@ -125,7 +163,6 @@ function StudentEvaluation() {
       studentProfile.push(doc.data());
       setstudProfile({ profile: studentProfile });
     });
-
   };
 
   useEffect(() => {
@@ -133,7 +170,7 @@ function StudentEvaluation() {
   }, []);
 
   return (
-    <Mui.Box sx={style.root}>
+    <Mui.Box>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Student Evaluation</title>
@@ -146,46 +183,58 @@ function StudentEvaluation() {
           content="Review, Ratings, Student Review, Student Ratings"
         />
       </Helmet>
-      <Mui.Box >
-        <Mui.Container >
-          <Mui.Paper sx={style.profileContainer}>
+      <Mui.Box>
+        <Mui.Box sx={style.profileContainer}>
+          <Mui.Paper sx={style.profilePaper}>
             {studProfile &&
               studProfile.profile.map((studProfile) => {
                 return (
-                  <Mui.Box
-                    display="flex"
-                    flexDirection="row"
-                    sx={{ padding: 10 }}
-                    key={studProfile.id}
-                  >
-                    <Mui.Box>
-                      <Mui.Avatar variant="square" sx={style.avatarCont} src={studProfile.profileImg} />
-                      <Rating
-                        name="text-feedback"
-                        value={studProfile.ovrall_rating}
-                        readOnly
-                        precision={0.5}
-                        icon={<StarRoundedIcon sx={style.filledStars} />}
-                        emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
-                      />
-                      <Mui.Box display="flex" flexDirection="row">
-                        <Mui.Typography>
-                          Overall Rating: {studProfile.ovrall_rating}
+                  <Mui.Box key={studProfile.id}>
+                    
+                      <Mui.Box sx = {style.innerContainer}>
+                        <Mui.Box
+                          component="img"
+                          sx={style.avatarCont}
+                          src={studProfile.profileImg}
+                        />
+                        <Rating
+                          name="text-feedback"
+                          value={studProfile.ovrall_rating}
+                          readOnly
+                          precision={0.5}
+                          icon={<StarRoundedIcon sx={style.filledStars} />}
+                          emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+                          sx = {style.Rating}
+                        />
+                      
+                      <Mui.Box sx = {style.RatingPaper}>
+                        <Mui.Typography sx = {style.numberFont}>
+                        {studProfile.ovrall_rating}
                         </Mui.Typography>
-                        <Mui.Typography>
-                          Reviews: {studProfile.reviews}
+                        <Mui.Typography sx = {style.subFont}>
+                         Overall Rating
+                        </Mui.Typography>
+                        <Mui.Typography sx = {style.numberFont}>
+                        {studProfile.reviews}
+                        </Mui.Typography>
+                        <Mui.Typography sx = {style.subFont}>
+                         Reviews
                         </Mui.Typography>
                       </Mui.Box>
                     </Mui.Box>
-                    <Mui.Box>
-                      <Mui.Typography>{studProfile.fullname}</Mui.Typography>
+                    <Mui.Box sx = {style.details}>
+                      <Mui.Typography sx = {style.studName}>{studProfile.fullname}</Mui.Typography>
                     </Mui.Box>
-                  </Mui.Box>
+                    <Mui.Box sx = {style.subdetails}>
+                      <Mui.Typography sx = {style.studSubdetails}>{studProfile.fullname}</Mui.Typography>
+                    </Mui.Box>
+                    </Mui.Box>
+                  
                 );
               })}
           </Mui.Paper>
-        </Mui.Container>
-        <Mui.Box color="background">
+        </Mui.Box>
+        <Mui.Box>
           <RatingCom />
         </Mui.Box>
         <CommentSection />

@@ -114,6 +114,7 @@ export default function CommentSection() {
                 alignItems: "center",
                 justifyContent: "center",
                 justifyItems: "center",
+                backgroundColor : "#131414"
             },
 
         }}>

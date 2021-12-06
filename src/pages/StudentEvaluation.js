@@ -350,7 +350,7 @@ function StudentEvaluation() {
                           <Mui.Typography sx={style.studSubdetails}>{studProfile.gender}</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>{studProfile.bday}</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>{studProfile.addr}</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.nicname}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.nickname}</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>{studProfile.skills}</Mui.Typography>
 
                         </Mui.Box>

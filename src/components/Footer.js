@@ -77,21 +77,21 @@ const style = {
     alignItems: "center",
     justifyContent: "center",
     padding: "8px 14px",
-    position: "relative",
+    position: "absolute",
     borderRadius: "3.125rem",
     backgroundColor: "#26CE8D",
     color: "white",
     textTransform: "none",
 
 // left: "20rem",
-    // top: {
-    //   xs: "69rem",
-    //   sm: "75rem",
-    //   md: "7rem",
-    // },
-    left: {
-      xs: "3rem",
-      sm: "4rem",
+    top: {
+      xs: "69rem",
+      sm: "77rem",
+      md: "77rem",
+    },
+    right: {
+      xs: "12rem",
+      sm: "18rem",
       md: "18rem",
     },
 

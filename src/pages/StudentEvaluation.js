@@ -347,11 +347,11 @@ function StudentEvaluation() {
 
                         </Mui.Box>
                         <Mui.Box sx={style.subdetails}>
-                          <Mui.Typography sx={style.studSubdetails}>Male</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>01-01-19991</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>Bustos, Bulacan</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>Bartz</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>ReactJS</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.gender}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.bday}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.addr}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.nicname}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>{studProfile.skills}</Mui.Typography>
 
                         </Mui.Box>
                         <Mui.Box sx={style.subdetails}>

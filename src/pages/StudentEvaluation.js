@@ -208,6 +208,26 @@ const style = {
     justifyContent: "center",
     flexDirection: "column"
   },
+  studSubdetailsRate: {
+    marginTop: "15px",
+    fontFamily: "Roboto",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "12px",
+    lineHeight: "12px",
+  
+    alignItems: "center",
+    marginRight: {
+      sm: "40px",
+      md: "40px"
+    },
+    color: "white",
+    background:"#26CE8D",
+    padding:"5px",
+    borderRadius:"5px",
+    margin:"7px"
+
+  },
 
   container:{
     margin: {
@@ -343,11 +363,11 @@ function StudentEvaluation() {
 
                         </Mui.Box>
                         <Mui.Box sx={style.subdetails}>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating} </Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsRate}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsRate}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsRate}>{studProfile.ovrall_rating}  </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsRate}>{studProfile.ovrall_rating} </Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsRate}>{studProfile.ovrall_rating}  </Mui.Typography>
 
                         </Mui.Box>
                       </Mui.Box>

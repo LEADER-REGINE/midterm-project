@@ -43,16 +43,16 @@ const style = {
   innerContainer: {
     display: "flex",
     flexDirection: "column",
-   
+
   },
 
   Rating: {
     marginLeft: {
-      
+
       md: "125.3px"
     },
-    margin:{
-      xs:"auto"
+    margin: {
+      xs: "auto"
     },
     marginTop: "10px",
     marginTop: {
@@ -78,45 +78,45 @@ const style = {
 
     border: "2px solid #FFFFFF",
     borderRadius: "10px",
-    
+
     marginTop: {
       xs: "10px",
       md: "70px",
       lg: "80.67px",
     },
 
-    marginLeft:{
+    marginLeft: {
       md: "149.17px"
     },
     margin: {
       xs: "auto",
-      
+
     },
 
-    
 
-    
-    
+
+
+
   },
 
   RatingPaper: {
     display: "flex",
     flexDirection: "row",
     marginLeft: {
-      
+
       md: "110px"
     },
     color: "white",
     marginTop: "-5px",
 
-    margin:{
-      xs:"auto"
+    margin: {
+      xs: "auto"
     },
 
-    marginBottom:{
-      xs:"10px"
-    }
-
+    marginBottom: {
+      xs: "10px"
+    },
+    color: "#D1D4C9"
   },
 
   numberFont: {
@@ -188,11 +188,24 @@ const style = {
     color: "white"
   },
 
-  studSubdetails: {
-    marginTop: "12px",
+  studCourse: {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "normal",
+    fontSize: {
+      xs: "10px",
+      md: "14px"
+    },
+    lineHeight: "24px",
+    alignItems: "center",
+    textAlign: "center",
+    color: "#D1D4C9",
+    margin: "0px 12px"
+  },
+  studSubdetails: {
+    marginTop: "12px",
+    fontFamily: "Roboto",
+    fontWeight: "500",
     fontSize: "12px",
     lineHeight: "24px",
     alignItems: "center",
@@ -200,13 +213,29 @@ const style = {
       sm: "40px",
       md: "40px"
     },
-    color: "white"
-    
+    color: "#D1D4C9"
   },
+
+
+  studSubdetailsinfo: {
+    letterSpacing: "1px",
+    marginTop: "12px",
+    fontFamily: "Roboto",
+    fontWeight: "300",
+    fontSize: "12px",
+    lineHeight: "24px",
+    alignItems: "center",
+    marginRight: {
+      sm: "40px",
+      md: "40px"
+    },
+    color: "#D1D4C9"
+  },
+
   subdetails: {
     display: "flex",
     justifyContent: "center",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   studSubdetailsRate: {
     marginTop: "15px",
@@ -215,26 +244,69 @@ const style = {
     fontWeight: "normal",
     fontSize: "12px",
     lineHeight: "12px",
-  
+
     alignItems: "center",
     marginRight: {
       sm: "40px",
       md: "40px"
     },
     color: "white",
-    background:"#26CE8D",
-    padding:"5px",
-    borderRadius:"5px",
-    margin:"7px"
+    background: "#26CE8D",
+    padding: "5px",
+    borderRadius: "5px",
+    margin: "7px"
 
   },
 
-  container:{
+  container: {
     margin: {
       xs: "40px",
       md: "0px"
     },
-  }
+  },
+  socialMediaContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    // marginTop:"20px"
+    padding:"10px",
+  },
+  socialMediaLink: {
+    padding: "1px",
+    display: "flex",
+    margin: "0px 24px",
+    letterSpacing: "1px",
+    color: "#26CE8D",
+    fontFamily: "Roboto",
+    fontWeight: "300",
+
+    lineHeight: "16px",
+    fontSize: {
+      xs: "10px",
+      sm: "11px",
+      md: "12px",
+    },
+  
+  },
+  socialMediacolorLink:{
+    color: "#62666D",
+    letterSpacing: "1px",
+    padding: "1px",
+    display: "flex",
+    margin: "0px 24px",
+
+    fontFamily: "Roboto",
+    fontWeight: "300",
+
+    lineHeight: "16px",
+    fontSize: {
+      xs: "10px",
+      sm: "11px",
+      md: "12px",
+    },
+  },
+
 };
 
 function StudentEvaluation() {
@@ -293,7 +365,7 @@ function StudentEvaluation() {
             {studProfile &&
               studProfile.profile.map((studProfile) => {
                 return (
-                  <Mui.Box key={studProfile.id} 
+                  <Mui.Box key={studProfile.id}
                     sx={style.container}
                   >
 
@@ -301,7 +373,7 @@ function StudentEvaluation() {
                       <Mui.Box
                         component="img"
                         sx={style.avatarCont}
-                        
+
 
 
                         src={studProfile.profileImg}
@@ -336,22 +408,23 @@ function StudentEvaluation() {
                     <Mui.Box >
                       <Mui.Box sx={style.details}>
                         <Mui.Typography sx={style.studName}>{studProfile.fullname}</Mui.Typography>
+                        <Mui.Typography sx={style.studCourse}>{studProfile.course}</Mui.Typography>
                       </Mui.Box>
-                      <Mui.Box sx={{ display: "flex", marginLeft: {sm:"290px", md:"392px"} }}>
+                      <Mui.Box sx={{ display: "flex", marginLeft: { sm: "290px", md: "392px" } }}>
                         <Mui.Box sx={style.subdetails}>
                           <Mui.Typography sx={style.studSubdetails}>Gender :</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>Birthday :</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>Address :</Mui.Typography>
                           <Mui.Typography sx={style.studSubdetails}>Nickname :</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>Skills/Language :</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetails}>Skills / Language :</Mui.Typography>
 
                         </Mui.Box>
                         <Mui.Box sx={style.subdetails}>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.gender}</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.bday}</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.addr}</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.nickname}</Mui.Typography>
-                          <Mui.Typography sx={style.studSubdetails}>{studProfile.skills}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsinfo}>{studProfile.gender}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsinfo}>{studProfile.bday}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsinfo}>{studProfile.addr}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsinfo}>{studProfile.nickname}</Mui.Typography>
+                          <Mui.Typography sx={style.studSubdetailsinfo}>{studProfile.skills}</Mui.Typography>
 
                         </Mui.Box>
                         <Mui.Box sx={style.subdetails}>
@@ -371,6 +444,14 @@ function StudentEvaluation() {
 
                         </Mui.Box>
                       </Mui.Box>
+                      <Mui.Box sm item sx={style.socialMediaContainer}>
+                        <Mui.Typography sx={style.socialMediacolorLink}>Github  </Mui.Typography>
+                        <Mui.Typography sx={style.socialMediaLink}>Facebook  </Mui.Typography>
+                        <Mui.Typography sx={style.socialMediaLink}>Linkedin  </Mui.Typography>
+                        <Mui.Typography sx={style.socialMediacolorLink}>Twitter  </Mui.Typography>
+                      </Mui.Box>
+
+
                     </Mui.Box>
                   </Mui.Box>
 

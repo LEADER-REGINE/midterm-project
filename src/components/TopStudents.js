@@ -5,6 +5,7 @@ import * as Mui from "@mui/material";
 import firebase from "../config/firebase";
 import { onSnapshot } from "@firebase/firestore";
 
+
 const style = {
   studentContainer: {
     display: "flex",
@@ -16,6 +17,8 @@ const style = {
     "@media only screen and (max-width : 720px)": {
       justifyContent: "center",
       alignItems: "center",
+      
+     
     },
   },
 
@@ -35,6 +38,7 @@ const style = {
       sm: "15px",
       md: "20px",
     },
+    borderRadius:"8px",
 
     backgroundColor: "#1E1F20",
     display: "flex",
@@ -116,7 +120,7 @@ export default function TopStudents() {
   }, []);
 
   return (
-    <Mui.Container>
+    <Mui.Container sx={style.container}>
       <Mui.Box sx={style.studentContainer}>
         {studlist &&
           studlist.list.map((studlist) => {

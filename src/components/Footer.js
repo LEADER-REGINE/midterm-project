@@ -85,7 +85,6 @@ const style = {
     bottom: "2rem",
     right: "4rem",
 
-    margin: "auto"
 
 
   },

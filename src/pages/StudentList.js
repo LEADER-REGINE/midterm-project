@@ -15,16 +15,18 @@ const style = {
   topStudent: {
     fontStyle: "normal",
     fontWeight: "bold",
+    color: "#D1D4C9",
     fontSize: {
       xs: "10px",
       sm: "14px",
       md: "18px",
     },
-    background: "#131414",
+    
+    // background: "#131414",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
-    color: "white",
+   
     paddingTop: "38px",
     paddingBottom: "0px",
   },

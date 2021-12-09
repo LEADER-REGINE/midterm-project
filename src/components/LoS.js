@@ -84,6 +84,7 @@ const style = {
       md: "800px",
       lg: "1025px",
     },
+    borderRadius:"12px",
     flexDirection: "row",
     marginBottom: "12px",
     flexWrap: "wrap",
@@ -114,6 +115,7 @@ const style = {
 
   studsubDetailsCourse: {
     display: "flex",
+
     marginLeft: {
       xs: "180px",
       sm: "280px",
@@ -126,6 +128,8 @@ const style = {
       sm: "-30.33px",
       md: "-40.33px",
     },
+   
+    
   },
   studsubDetailsReview: {
     display: "flex",
@@ -162,6 +166,7 @@ const style = {
   details: {
     display: "flex",
     flexDirection: "row",
+    
     marginLeft: {
       xs: "135px",
       sm: "245px",
@@ -178,6 +183,7 @@ const style = {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
+    
   },
   stdLabel: {
     marginLeft: {
@@ -193,6 +199,7 @@ const style = {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "500",
+    color: "#D1D4C9",
     fontSize: {
       xs: "10px",
       sm: "12px",
@@ -200,27 +207,33 @@ const style = {
     },
     paddingLeft: "7.33px",
     alignItems: "center",
+    
   },
 
   studDetailsFont: {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "500",
+    color: "#62666D",
+    
     fontSize: {
       xs: "10px",
       sm: "12px",
       md: "18px",
     },
+ 
   },
   studDetailsFontReview: {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "500",
+    color: "#D1D4C9",
     fontSize: {
       xs: "10px",
       sm: "12px",
       md: "18px",
     },
+    
     marginLeft: {
       xs: "55px",
       sm: "115px",

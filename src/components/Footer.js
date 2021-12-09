@@ -73,29 +73,19 @@ const style = {
     },
 
     display: "flex",
-    // flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     padding: "8px 14px",
-    position: "absolute",
+    position: "fixed",
     borderRadius: "3.125rem",
     backgroundColor: "#26CE8D",
     color: "white",
     textTransform: "none",
 
-// left: "20rem",
-    top: {
-      xs: "69rem",
-      sm: "77rem",
-      md: "77rem",
-    },
-    right: {
-      xs: "12rem",
-      sm: "18rem",
-      md: "18rem",
-    },
+    bottom: "2rem",
+    right: "4rem",
 
-// margin:"auto"
+    margin: "auto"
 
 
   },
@@ -118,7 +108,7 @@ export default function Footer() {
 
 
               <Box sm item sx={style.colContainer}>
-               
+
                 <a href="https://www.twitter.com">
                   {" "}
                   <Typography sx={style.vectorStyle}>
@@ -154,9 +144,7 @@ export default function Footer() {
                 <Typography sx={style.info} color="textPrimary">
                   © 2021 Student Review. All Rights Reserved.
                 </Typography>
-                <Button sx={style.helpButton} variant="outlined" startIcon={<HelpOutlineIcon />}>
-                  Help
-                </Button>
+
               </Box>
 
               <Box sx={style.colContainer}>
@@ -167,6 +155,11 @@ export default function Footer() {
                 <Typography sx={style.infoColor} color="textPrimary">
                   Privacy Policy
                 </Typography>
+              </Box>
+              <Box>
+                <Button sx={style.helpButton} variant="outlined" startIcon={<HelpOutlineIcon />}>
+                  Help
+                </Button>
               </Box>
             </Box>
           </Grid>

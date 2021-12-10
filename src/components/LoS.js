@@ -106,6 +106,11 @@ const style = {
       sm: "38px",
       md: "42.67px",
     },
+    width : {
+      xs: "30px",
+      sm: "38px",
+      md: "42.67px",
+    },
     borderRadius: "5px",
     border: "2px solid #303336",
   },

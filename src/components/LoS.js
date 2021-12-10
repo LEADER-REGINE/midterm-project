@@ -13,14 +13,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTheme, getID } from "../redux/actions/uiAction";
 import { setID } from "../redux/actions/uiAction";
 import { display } from "@mui/system";
+import Rating from "@mui/material/Rating";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
 const style = {
   sortContainer: {
     marginTop: "57px",
     marginLeft: {
-      xs: "100px",
-      sm: "450px",
-      md: "650px",
+      sm: "400px",
+      md: "550px",
     },
     display: "flex",
     justifyContent: "center",
@@ -82,7 +83,7 @@ const style = {
       xs: "380px",
       sm: "600px",
       md: "800px",
-      lg: "1025px",
+      lg: "906px",
     },
     borderRadius:"12px",
     flexDirection: "row",
@@ -93,17 +94,17 @@ const style = {
     display: "flex",
     alignItems: "center",
     marginTop: "10.33px",
+    marginLeft: {
+      xs: "21.33px",
+      sm: "31.33px",
+      md: "61.33px",
+    },
   },
   studImg: {
     height: {
       xs: "30px",
       sm: "38px",
       md: "42.67px",
-    },
-    marginLeft: {
-      xs: "21.33px",
-      sm: "31.33px",
-      md: "61.33px",
     },
     borderRadius: "5px",
     border: "2px solid #303336",
@@ -120,7 +121,7 @@ const style = {
       xs: "180px",
       sm: "280px",
       md: "413px",
-      lg: "550px",
+      lg: "475px",
     },
     marginRight: "22.5px",
     marginTop: {
@@ -170,8 +171,7 @@ const style = {
     marginLeft: {
       xs: "135px",
       sm: "245px",
-      md: "380px",
-      lg: "480px",
+      md: "390px",
     },
     flexWrap: "wrap",
     margin: "20px 0",
@@ -182,6 +182,7 @@ const style = {
   studListContainer: {
     display: "flex",
     alignItems: "center",
+    justifyContent : "center",
     flexDirection: "column",
     
   },
@@ -190,13 +191,12 @@ const style = {
       xs: "25px",
       sm: "80px",
       md: "100px",
-      lg: "120px",
     },
     textAlign: "center",
   },
 
   studameFont: {
-    fontFamily: "Roboto",
+    
     fontStyle: "normal",
     fontWeight: "500",
     color: "#D1D4C9",
@@ -211,7 +211,6 @@ const style = {
   },
 
   studDetailsFont: {
-    fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "500",
     color: "#62666D",
@@ -219,7 +218,7 @@ const style = {
     fontSize: {
       xs: "10px",
       sm: "12px",
-      md: "18px",
+      md: "14px",
     },
  
   },
@@ -238,7 +237,7 @@ const style = {
       xs: "55px",
       sm: "115px",
       md: "132px",
-      lg: "152.5px",
+      lg: "142.5px",
     },
   },
   studDetailsFontRating: {
@@ -268,6 +267,15 @@ const style = {
     },
     textAlign: "center",
   },
+
+  starContainer : {
+    marginLeft : {
+      xs: "30px",
+      sm: "48.5px",
+      md: "55px",
+      lg: "76px",
+    }
+  }
 };
 
 export default function LoS() {
@@ -399,9 +407,18 @@ export default function LoS() {
                       <Mui.Typography sx={style.studDetailsFontReview}>
                         {studlist.reviews}
                       </Mui.Typography>
-                      <Mui.Typography sx={style.studDetailsFontRating}>
-                        {studlist.ovrall_rating}
-                      </Mui.Typography>
+                      <Mui.Box sx = {style.starContainer}>
+
+                  <Rating
+                        name="text-feedback"
+                        value={studlist.ovrall_rating}
+                        readOnly
+                        precision={0.5}
+                        icon={<StarRoundedIcon sx={style.filledStars} />}
+                        emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+                        sx={style.Rating}
+                      />
+                  </Mui.Box>
                     </Mui.Box>
                   </Link>
                 </Mui.Paper>

@@ -21,6 +21,11 @@ const style = {
       sm: "14px",
       md: "18px",
     },
+
+    marginLeft : {
+      md : "80px",
+      lg : "128.6px"
+    },
     
     // background: "#131414",
     display: "flex",

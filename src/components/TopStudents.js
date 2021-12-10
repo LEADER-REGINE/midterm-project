@@ -4,19 +4,21 @@ import React, { useEffect, useState } from "react";
 import * as Mui from "@mui/material";
 import firebase from "../config/firebase";
 import { onSnapshot } from "@firebase/firestore";
+import Rating from "@mui/material/Rating";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
 
 const style = {
   studentContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
     flexWrap: "wrap",
     background: "#131414",
-    paddingTop: "0",
+    justifyContent: "center",
+   
     "@media only screen and (max-width : 720px)": {
       justifyContent: "center",
-      alignItems: "center",
+      
       
      
     },
@@ -33,11 +35,17 @@ const style = {
       sm: "171px",
       md: "201px",
     },
-    margin: {
-      xs: "10px",
-      sm: "15px",
-      md: "20px",
+    marginRight: {
+      xs: "5px",
+      sm: "10px",
+      md: "15px",
     },
+    marginLeft: {
+      xs: "5px",
+      sm: "10px",
+      md: "15px",
+    },
+    marginTop : "20px",
     borderRadius:"8px",
 
     backgroundColor: "#1E1F20",
@@ -72,7 +80,6 @@ const style = {
     flexDirection: "column",
   },
   studentName: {
-    fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "500",
     fontSize: {
@@ -87,7 +94,6 @@ const style = {
     marginRight: "6.67px",
   },
   studentReview: {
-    fontFamily: "Roboto",
     fontSize: {
       xs: "10px",
       sm: "12px",
@@ -97,6 +103,27 @@ const style = {
     alignItems: "center",
     textAlign: "center",
     color: "#62666D",
+  },
+  filledStars: {
+    color: "#26CE8D",
+    fontSize: {
+      xs: "10px",
+      sm: "20px",
+      md: "18px",
+    },
+  },
+
+  emptyStars: {
+    color: "#2C2F31",
+
+    fontSize: {
+      xs: "10px",
+      sm: "20px",
+      md: "18px",
+    },
+  },
+  Rating : {
+    marginTop : "15.88px"
   },
 };
 
@@ -141,6 +168,18 @@ export default function TopStudents() {
                   </Mui.Box>
                   <Mui.Box component="label" sx={style.studentReview}>
                     {studlist.reviews} reviews
+                  </Mui.Box>
+                  <Mui.Box>
+
+                  <Rating
+                        name="text-feedback"
+                        value={studlist.ovrall_rating}
+                        readOnly
+                        precision={0.5}
+                        icon={<StarRoundedIcon sx={style.filledStars} />}
+                        emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+                        sx={style.Rating}
+                      />
                   </Mui.Box>
                 </Mui.Box>
               </Mui.Paper>

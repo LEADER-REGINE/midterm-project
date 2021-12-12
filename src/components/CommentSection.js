@@ -3,9 +3,11 @@ import Box from '@mui/material/Box';
 import firebase from "../config/firebase";
 import { TextField, Typography, Button, IconButton, Avatar, Card, CardHeader, CardContent, CardActions, Collapse, Rating } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import ReplyIcon from '@mui/icons-material/Reply';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -41,6 +43,27 @@ const style = {
             md: "30px",
         },
     },
+    expand: {
+        color: "#62666D",
+      
+    },
+    expandTextinfo:{
+        marginLeft:"5px",
+        fontSize: {
+            xs: "11px",
+            sm: "11.5px",
+            md: "12px",
+          }
+    },
+    commentInfo:{
+        color: "#D1D4C9",
+        fontWeight: "500",
+        fontSize: {
+            xs: "11px",
+            sm: "12.5px",
+            md: "14px",
+          }
+    }
 }
 export default function CommentSection() {
     const db = firebase.firestore();
@@ -93,8 +116,10 @@ export default function CommentSection() {
                                     <Avatar sx={{}} aria-label="recipe" src={commentsList.profileImg}>
                                     </Avatar>
                                 }
-                                title={commentsList.email}
+                             
+                                title={commentsList.email }
                                 subheader="Time Posted"
+                              style={style.commentInfo}
                             />
                             <Rating
                                 icon={<StarRoundedIcon sx={style.rofilledStars} />}
@@ -111,12 +136,13 @@ export default function CommentSection() {
                             </CardContent>
                             <CardActions >
                                 <ExpandMore
-                                    expand={expanded}
                                     onClick={handleExpandClick}
-                                    aria-expanded={expanded}
-                                    aria-label="show more"
+                                    sx={style.expand}
                                 >
-                                    <ExpandMoreIcon sx={{ color: "#62666D" }} />
+                                    < ChatBubbleOutlineIcon  sx={style.expandTextinfo}/>
+                                    <Typography  sx={style.expandTextinfo} >comment</Typography>
+                                    < ErrorOutlineIcon  sx={style.expandTextinfo}/>
+                                    <Typography  sx={style.expandTextinfo} >Report</Typography>
                                 </ExpandMore>
 
                             </CardActions>

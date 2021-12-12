@@ -11,6 +11,7 @@ import Rating from "@mui/material/Rating";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import RatingCom from "../components/Rating";
 import { getAuth } from "firebase/auth";
+import Pagination from "../components/Pagination"
 
 const style = {
   profileContainer: {
@@ -25,12 +26,17 @@ const style = {
       alignItems: "center",
     },
   },
+  pagination: {
+  
+    background: "#131414",
+  },
 
   profilePaper: {
     width: {
       sm: "700px",
       md: "850px",
       lg: "926px",
+
     },
     height: {
       sm: "250px",
@@ -38,11 +44,13 @@ const style = {
       lg: "324px",
     },
     backgroundColor: "#1E1F20",
+
   },
 
   innerContainer: {
     display: "flex",
     flexDirection: "column",
+
   },
 
   Rating: {
@@ -85,6 +93,7 @@ const style = {
   },
 
   RatingPaper: {
+
     display: "flex",
     flexDirection: "row",
     marginLeft: {
@@ -179,7 +188,7 @@ const style = {
     marginTop: "12px",
     fontWeight: "500",
     fontSize: {
-      xs:"10px",
+      xs: "10px",
       sm: "11.5px",
       md: "12px",
     },
@@ -198,7 +207,7 @@ const style = {
     textAlign: "right",
     fontWeight: "300",
     fontSize: {
-      xs:"10px",
+      xs: "10px",
       sm: "11.5px",
       md: "12px",
     },
@@ -209,7 +218,7 @@ const style = {
       md: "100px",
     },
     color: "#D1D4C9",
-    marginRight:"10px"
+    marginRight: "10px"
   },
 
   subdetails: {
@@ -226,7 +235,7 @@ const style = {
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: {
-      xs:"10px",
+      xs: "10px",
       sm: "11.5px",
       md: "12px",
     },
@@ -334,8 +343,9 @@ function StudentEvaluation() {
   }, []);
 
   return (
-    <Mui.Box>
+    <Mui.Box >
       <Helmet>
+
         <meta charSet="utf-8" />
         <title>Student Evaluation</title>
         <meta
@@ -349,7 +359,7 @@ function StudentEvaluation() {
       </Helmet>
       <Mui.Box>
         <Mui.Box sx={style.profileContainer}>
-          <Mui.Paper sx={style.profilePaper}>
+          <Mui.Paper sx={style.profilePaper} >
             {studProfile &&
               studProfile.profile.map((studProfile) => {
                 return (
@@ -386,8 +396,8 @@ function StudentEvaluation() {
                       </Mui.Box>
                     </Mui.Box>
 
-                    <Mui.Box>
-                      <Mui.Box sx={style.details}>
+                    <Mui.Box     >
+                      <Mui.Box sx={style.details} >
                         <Mui.Typography sx={style.studName}>
                           {studProfile.fullname}
                         </Mui.Typography>
@@ -395,7 +405,7 @@ function StudentEvaluation() {
                           {studProfile.course}
                         </Mui.Typography>
                       </Mui.Box>
-                      <Mui.Box
+                      <Mui.Box sx={{ background: "#131414" }}
                         sx={{
                           display: "flex",
                           marginLeft: { sm: "270px", md: "385px" },
@@ -490,10 +500,14 @@ function StudentEvaluation() {
               })}
           </Mui.Paper>
         </Mui.Box>
-        <Mui.Box>
+        <Mui.Box >
           <RatingCom />
         </Mui.Box>
         <CommentSection />
+
+      </Mui.Box>
+      <Mui.Box sx={style.pagination}>
+        <Pagination />
       </Mui.Box>
     </Mui.Box>
   );

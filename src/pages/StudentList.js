@@ -6,6 +6,7 @@ import * as Mui from "@mui/material";
 import TopStudents from "../components/TopStudents";
 import LoS from "../components/LoS";
 import { Helmet } from "react-helmet";
+import Pagination from "../components/Pagination"
 
 const style = {
   root: {
@@ -65,6 +66,7 @@ function StudentList() {
         <TopStudents />
         <LoS />
       </Mui.Box>
+      <Pagination/>
     </Mui.Box>
   );
 }

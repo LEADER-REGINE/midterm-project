@@ -92,7 +92,7 @@ export default function Footer() {
     <Box sx={style.root}>
       <Box sx={style.footerStyle}>
         <Grid container>
-          <Grid item xs={12}>
+        <Grid item xs={12}>
             <Box sx={style.topMargin}></Box>
 
             <Box sx={style.info}>

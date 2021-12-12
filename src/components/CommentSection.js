@@ -52,7 +52,7 @@ const style = {
         fontSize: {
             xs: "11px",
             sm: "11.5px",
-            md: "12px",
+            md: "14px",
           }
     },
     commentInfo:{

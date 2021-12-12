@@ -3,7 +3,6 @@ import "../App.css";
 import React, { useEffect, useState } from "react";
 import * as Mui from "@mui/material";
 import firebase from "../config/firebase";
-import { onSnapshot } from "@firebase/firestore";
 import Rating from "@mui/material/Rating";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 

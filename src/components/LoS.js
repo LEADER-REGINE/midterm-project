@@ -3,16 +3,14 @@ import "../App.css";
 import React, { useEffect, useState } from "react";
 import * as Mui from "@mui/material";
 import firebase from "../config/firebase";
-import { onSnapshot } from "@firebase/firestore";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { studentData } from "../pages/studentinfo";
-import { Link, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Link} from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { getTheme, getID } from "../redux/actions/uiAction";
 import { setID } from "../redux/actions/uiAction";
-import { display } from "@mui/system";
 import Rating from "@mui/material/Rating";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 

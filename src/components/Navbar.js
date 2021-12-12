@@ -12,8 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import LoginModal from "./LoginModal";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MdOutlineGridView } from "react-icons/md";
 
 const Search = styled("div")(({ theme }) => ({

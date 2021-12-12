@@ -1,11 +1,8 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Grid, TextField, Typography, Box } from "@mui/material"
+import { Grid, Typography, Box } from "@mui/material"
 
 export default function Pagination() {
 
@@ -21,11 +18,9 @@ export default function Pagination() {
 
         },
         pagesStyle: {
-            padding: "5px",
+            padding: "7px",
             color: "#D1D4C9",
             fontWeight: "300",
-            fontSize: "14px",
-            padding: "1px",
             marginLeft:"3px",
             justifyContent:"center",
             fontSize: {

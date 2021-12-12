@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, Divider, Button, Stack } from "@mui/material";
+import { Box, Grid, Typography, Divider, Button,} from "@mui/material";
 
 import { ReactComponent as Vector1 } from "../assets/svg/vector1.svg";
 import { ReactComponent as Vector2 } from "../assets/svg/vector2.svg";

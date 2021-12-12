@@ -1,9 +1,8 @@
 import "../App.css";
 import { useDispatch } from "react-redux";
-import { getTheme, getID } from "../redux/actions/uiAction";
+import { getID } from "../redux/actions/uiAction";
 import React, { useEffect, useState } from "react";
 import * as Mui from "@mui/material";
-import StudentProfile from "../components/StudentProfile";
 import { Helmet } from "react-helmet";
 import firebase from "../config/firebase";
 import CommentSection from "../components/CommentSection";

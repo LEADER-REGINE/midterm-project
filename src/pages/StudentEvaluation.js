@@ -179,7 +179,8 @@ const style = {
     marginTop: "12px",
     fontWeight: "500",
     fontSize: {
-      sm: "8px",
+      xs:"10px",
+      sm: "11.5px",
       md: "12px",
     },
     lineHeight: "24px",
@@ -197,7 +198,8 @@ const style = {
     textAlign: "right",
     fontWeight: "300",
     fontSize: {
-      sm: "8px",
+      xs:"10px",
+      sm: "11.5px",
       md: "12px",
     },
     lineHeight: "24px",
@@ -207,6 +209,7 @@ const style = {
       md: "100px",
     },
     color: "#D1D4C9",
+    marginRight:"10px"
   },
 
   subdetails: {
@@ -223,7 +226,8 @@ const style = {
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: {
-      sm: "8px",
+      xs:"10px",
+      sm: "11.5px",
       md: "12px",
     },
     lineHeight: "12px",

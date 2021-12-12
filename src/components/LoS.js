@@ -85,7 +85,7 @@ const style = {
       md: "800px",
       lg: "906px",
     },
-    borderRadius:"12px",
+    borderRadius: "12px",
     flexDirection: "row",
     marginBottom: "12px",
     flexWrap: "wrap",
@@ -106,7 +106,7 @@ const style = {
       sm: "38px",
       md: "42.67px",
     },
-    width : {
+    width: {
       xs: "30px",
       sm: "38px",
       md: "42.67px",
@@ -134,8 +134,6 @@ const style = {
       sm: "-30.33px",
       md: "-40.33px",
     },
-   
-    
   },
   studsubDetailsReview: {
     display: "flex",
@@ -172,7 +170,7 @@ const style = {
   details: {
     display: "flex",
     flexDirection: "row",
-    
+
     marginLeft: {
       xs: "135px",
       sm: "245px",
@@ -187,9 +185,8 @@ const style = {
   studListContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent : "center",
+    justifyContent: "center",
     flexDirection: "column",
-    
   },
   stdLabel: {
     marginLeft: {
@@ -201,7 +198,6 @@ const style = {
   },
 
   studameFont: {
-    
     fontStyle: "normal",
     fontWeight: "500",
     color: "#D1D4C9",
@@ -212,20 +208,18 @@ const style = {
     },
     paddingLeft: "7.33px",
     alignItems: "center",
-    
   },
 
   studDetailsFont: {
     fontStyle: "normal",
     fontWeight: "500",
     color: "#62666D",
-    
+
     fontSize: {
       xs: "10px",
       sm: "12px",
       md: "14px",
     },
- 
   },
   studDetailsFontReview: {
     fontFamily: "Roboto",
@@ -237,7 +231,7 @@ const style = {
       sm: "12px",
       md: "18px",
     },
-    
+
     marginLeft: {
       xs: "55px",
       sm: "115px",
@@ -273,14 +267,32 @@ const style = {
     textAlign: "center",
   },
 
-  starContainer : {
-    marginLeft : {
+  starContainer: {
+    marginLeft: {
       xs: "30px",
       sm: "48.5px",
       md: "55px",
       lg: "76px",
-    }
-  }
+    },
+  },
+  filledStars: {
+    color: "#26CE8D",
+    fontSize: {
+      xs: "10px",
+      sm: "20px",
+      md: "25px",
+    },
+  },
+
+  emptyStars: {
+    color: "#2C2F31",
+
+    fontSize: {
+      xs: "10px",
+      sm: "20px",
+      md: "25px",
+    },
+  },
 };
 
 export default function LoS() {
@@ -395,7 +407,7 @@ export default function LoS() {
                           component="img"
                           src={studlist.profileImg}
                           variant="square"
-                          alt="Profile Image"
+                          alt=""
                           sx={style.studImg}
                         />
                       </Mui.Box>
@@ -412,18 +424,17 @@ export default function LoS() {
                       <Mui.Typography sx={style.studDetailsFontReview}>
                         {studlist.reviews}
                       </Mui.Typography>
-                      <Mui.Box sx = {style.starContainer}>
-
-                  <Rating
-                        name="text-feedback"
-                        value={studlist.ovrall_rating}
-                        readOnly
-                        precision={0.5}
-                        icon={<StarRoundedIcon sx={style.filledStars} />}
-                        emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
-                        sx={style.Rating}
-                      />
-                  </Mui.Box>
+                      <Mui.Box sx={style.starContainer}>
+                        <Rating
+                          name="text-feedback"
+                          value={studlist.ovrall_rating}
+                          readOnly
+                          precision={0.5}
+                          icon={<StarRoundedIcon sx={style.filledStars} />}
+                          emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+                          sx={style.Rating}
+                        />
+                      </Mui.Box>
                     </Mui.Box>
                   </Link>
                 </Mui.Paper>

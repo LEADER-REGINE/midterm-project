@@ -7,7 +7,6 @@ import { onSnapshot } from "@firebase/firestore";
 import Rating from "@mui/material/Rating";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
-
 const style = {
   studentContainer: {
     display: "flex",
@@ -15,12 +14,9 @@ const style = {
     flexWrap: "wrap",
     background: "#131414",
     justifyContent: "center",
-   
+
     "@media only screen and (max-width : 720px)": {
       justifyContent: "center",
-      
-      
-     
     },
   },
 
@@ -45,8 +41,8 @@ const style = {
       sm: "10px",
       md: "15px",
     },
-    marginTop : "20px",
-    borderRadius:"8px",
+    marginTop: "20px",
+    borderRadius: "8px",
 
     backgroundColor: "#1E1F20",
     display: "flex",
@@ -108,7 +104,7 @@ const style = {
     color: "#26CE8D",
     fontSize: {
       xs: "10px",
-      sm: "20px",
+      sm: "15px",
       md: "18px",
     },
   },
@@ -118,12 +114,15 @@ const style = {
 
     fontSize: {
       xs: "10px",
-      sm: "20px",
+      sm: "15px",
       md: "18px",
     },
   },
-  Rating : {
-    marginTop : "15.88px"
+  Rating: {
+    marginTop: {
+      sm: "4.88px",
+      md: "15.88px",
+    },
   },
 };
 
@@ -170,16 +169,15 @@ export default function TopStudents() {
                     {studlist.reviews} reviews
                   </Mui.Box>
                   <Mui.Box>
-
-                  <Rating
-                        name="text-feedback"
-                        value={studlist.ovrall_rating}
-                        readOnly
-                        precision={0.5}
-                        icon={<StarRoundedIcon sx={style.filledStars} />}
-                        emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
-                        sx={style.Rating}
-                      />
+                    <Rating
+                      name="text-feedback"
+                      value={studlist.ovrall_rating}
+                      readOnly
+                      precision={0.5}
+                      icon={<StarRoundedIcon sx={style.filledStars} />}
+                      emptyIcon={<StarRoundedIcon sx={style.emptyStars} />}
+                      sx={style.Rating}
+                    />
                   </Mui.Box>
                 </Mui.Box>
               </Mui.Paper>

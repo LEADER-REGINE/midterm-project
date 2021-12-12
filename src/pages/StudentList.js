@@ -22,16 +22,16 @@ const style = {
       md: "18px",
     },
 
-    marginLeft : {
-      md : "80px",
-      lg : "128.6px"
+    marginLeft: {
+      md: "80px",
+      lg: "128.6px",
     },
-    
+
     // background: "#131414",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
-   
+
     paddingTop: "38px",
     paddingBottom: "0px",
   },

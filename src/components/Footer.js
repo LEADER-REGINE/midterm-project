@@ -5,8 +5,7 @@ import { ReactComponent as Vector1 } from "../assets/svg/vector1.svg";
 import { ReactComponent as Vector2 } from "../assets/svg/vector2.svg";
 import { ReactComponent as Vector3 } from "../assets/svg/vector3.svg";
 
-
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const style = {
   root: {
@@ -54,8 +53,6 @@ const style = {
     display: "flex",
   },
   helpButton: {
-
-
     height: {
       xs: "1.75rem",
       sm: "2rem",
@@ -84,13 +81,10 @@ const style = {
 
     bottom: "2rem",
     right: "4rem",
-
-
-
   },
   topMargin: {
-    marginTop: "25rem"
-  }
+    marginTop: "25rem",
+  },
 };
 
 export default function Footer() {
@@ -98,16 +92,11 @@ export default function Footer() {
     <Box sx={style.root}>
       <Box sx={style.footerStyle}>
         <Grid container>
-
           <Grid item xs={12}>
-            <Box sx={style.topMargin}>
-            </Box>
+            <Box sx={style.topMargin}></Box>
 
             <Box sx={style.info}>
-
-
               <Box sm item sx={style.colContainer}>
-
                 <a href="https://www.twitter.com">
                   {" "}
                   <Typography sx={style.vectorStyle}>
@@ -143,7 +132,6 @@ export default function Footer() {
                 <Typography sx={style.info} color="textPrimary">
                   © 2021 Student Review. All Rights Reserved.
                 </Typography>
-
               </Box>
 
               <Box sx={style.colContainer}>
@@ -156,7 +144,11 @@ export default function Footer() {
                 </Typography>
               </Box>
               <Box>
-                <Button sx={style.helpButton} variant="outlined" startIcon={<HelpOutlineIcon />}>
+                <Button
+                  sx={style.helpButton}
+                  variant="outlined"
+                  startIcon={<HelpOutlineIcon />}
+                >
                   Help
                 </Button>
               </Box>

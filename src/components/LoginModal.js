@@ -183,7 +183,7 @@ export default function LoginModal() {
   return (
     <Box>
       <Button onClick={handleOpen} variant="text" color="secondary">
-        <AccountCircleOutlinedIcon sx={{ color: "white" , }} />
+        <AccountCircleOutlinedIcon sx={{ color: "white" , }} style={{ fontSize: 26,  }} />
       </Button>
       <Modal
         open={open}

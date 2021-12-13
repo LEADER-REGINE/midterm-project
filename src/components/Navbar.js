@@ -123,6 +123,7 @@ export default function Navbar() {
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
+                
               >
                 <MenuIcon />
               </IconButton>

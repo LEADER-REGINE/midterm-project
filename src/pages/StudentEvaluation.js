@@ -54,6 +54,7 @@ const style = {
 
   Rating: {
     marginLeft: {
+      sm: "65.3px",
       md: "125.3px",
     },
     marginTop: "10px",
@@ -68,12 +69,12 @@ const style = {
   avatarCont: {
     height: {
       xs: "6.146rem",
-      sm: "6.271rem",
+      sm: "80.22px",
       md: "122.22px",
     },
     width: {
       xs: "6.146rem",
-      sm: "6.271rem",
+      sm: "80.22px",
       md: "122.22px",
     },
 
@@ -87,6 +88,7 @@ const style = {
     },
 
     marginLeft: {
+      sm : "75px",
       md: "140px",
     },
   },
@@ -96,6 +98,7 @@ const style = {
     display: "flex",
     flexDirection: "row",
     marginLeft: {
+      sm : "45px",
       md: "110px",
     },
     color: "white",
@@ -109,7 +112,10 @@ const style = {
   numberFont: {
     fontWeight: "400",
     fontStyle: "normal",
-    fontSize: "18px",
+    fontSize: {
+      sm : "15px",
+      md : "18px"
+    },
     LineHeight: "20px",
     textAlign: "center",
     marginLeft: "10px",
@@ -118,7 +124,10 @@ const style = {
   subFont: {
     fontWeight: "400",
     fontStyle: "normal",
-    fontSize: "12px",
+    fontSize: {
+      sm : "9px",
+      md : "12px"
+    },
     LineHeight: "16px",
     marginTop: "7px",
     marginLeft: "6px",
@@ -150,7 +159,7 @@ const style = {
       md: "384px",
     },
     marginTop: {
-      sm: "-200px",
+      sm: "-180px",
       md: "-250px",
       lg: "-255px",
     },
@@ -188,13 +197,13 @@ const style = {
     fontWeight: "500",
     fontSize: {
       xs: "10px",
-      sm: "11.5px",
+      sm: "10.5px",
       md: "12px",
     },
     lineHeight: "24px",
     alignItems: "center",
     marginRight: {
-      sm: "40px",
+      sm: "10px",
       md: "40px",
     },
     color: "#D1D4C9",
@@ -207,17 +216,18 @@ const style = {
     fontWeight: "300",
     fontSize: {
       xs: "10px",
-      sm: "11.5px",
+      sm: "10.5px",
       md: "12px",
     },
     lineHeight: "24px",
     alignItems: "center",
     marginRight: {
-      sm: "20px",
+      xs : "10px",
+      sm: "40px",
       md: "100px",
     },
     color: "#D1D4C9",
-    marginRight: "10px"
+   
   },
 
   subdetails: {
@@ -225,8 +235,7 @@ const style = {
     justifyContent: "center",
     flexDirection: "column",
     marginTop: {
-      sm: "0px",
-      md: "20px",
+      md: "15px",
     },
   },
   studSubdetailsRate: {
@@ -235,7 +244,7 @@ const style = {
     fontWeight: "normal",
     fontSize: {
       xs: "10px",
-      sm: "11.5px",
+      sm: "10.5px",
       md: "12px",
     },
     lineHeight: "12px",

@@ -213,11 +213,12 @@ const style = {
     lineHeight: "24px",
     alignItems: "center",
     marginRight: {
+      xs:"10px",
       sm: "20px",
       md: "100px",
     },
     color: "#D1D4C9",
-    marginRight: "10px"
+   
   },
 
   subdetails: {

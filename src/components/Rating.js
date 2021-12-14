@@ -271,7 +271,6 @@ const style = {
     },
   },
 
-
 };
 
 
@@ -471,6 +470,8 @@ export default function BasicRating() {
                     sx={style.commentBox}
                     onChange={userInput("postBody")}
                     value={payload.postBody}
+
+                    InputProps = {{style : {color : "white"}}}
                   />
                   <Button sx={style.submitButton} variant="contained" type="submit" className="submitButton" >Submit</Button>
                 </Typography>

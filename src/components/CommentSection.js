@@ -157,7 +157,8 @@ export default function CommentSection() {
                                             <TextField
                                                 type="text"
                                                 name="commentBody"
-                                                sx={{ width: "100%" }}
+                                                sx={{ width: "100%" , border : "none" , backgroundColor: "#131414", }}
+                                                InputProps = {{style : {color : "white"}}}
                                             />
                                             <Button sx={{ height: "44px", backgroundColor: "#26CE8D", width: "143px", color: "#fff", marginLeft: "16px" }}>
                                                 <Typography sx={{ fontSize: "14px" }}>
